@@ -1,31 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-primary: #0b0d19;
-  --bg-secondary: #121528;
-  --bg-card: rgba(22, 27, 54, 0.65);
-  --bg-sidebar: #0f1124;
-  --border-color: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(255, 255, 255, 0.15);
+  --bg-primary: #0b0d19;          /* Old dark background */
+  --bg-secondary: #0f1124;        /* Dark secondary */
+  --bg-card: #ffffff;             /* Crisp white card base */
+  --bg-sidebar: #02377f;          /* Deep blue brand sidebar */
+  --border-color: rgba(2, 55, 127, 0.08); /* Subtle deep blue border */
+  --border-hover: rgba(2, 55, 127, 0.2);
   
-  --color-text-main: #f3f4f6;
-  --color-text-muted: #9ca3af;
+  --color-text-main: #f3f4f6;     /* Light text for dark page headers */
+  --color-text-muted: #9ca3af;    /* Muted text for dark page headers */
   --color-text-dim: #6b7280;
   
-  --accent-primary: #818cf8;
-  --accent-secondary: #c084fc;
-  --accent-gradient: linear-gradient(135deg, #818cf8, #c084fc);
+  --accent-primary: #02377f;      /* Deep blue brand */
+  --accent-secondary: #fdc247;    /* Gold brand */
+  --accent-gradient: linear-gradient(135deg, #02377f, #1d4ed8); /* Deep blue gradient */
   
-  --color-success: #2dd4bf;
-  --color-success-bg: rgba(45, 212, 191, 0.15);
-  --color-warning: #fbbf24;
-  --color-warning-bg: rgba(251, 191, 36, 0.15);
-  --color-danger: #fb7185;
-  --color-danger-bg: rgba(251, 113, 133, 0.15);
-  --color-info: #60a5fa;
-  --color-info-bg: rgba(96, 165, 250, 0.15);
+  --color-success: #027529;       /* Brand Green success */
+  --color-success-bg: rgba(2, 117, 41, 0.08);
+  --color-warning: #ca8a04;       /* Darker gold for text visibility on lightbg */
+  --color-warning-bg: rgba(253, 194, 71, 0.14);
+  --color-danger: #991b1b;        /* Brand Maroon/Crimson danger */
+  --color-danger-bg: rgba(153, 27, 27, 0.08);
+  --color-info: #0284c7;          /* Sky blue */
+  --color-info-bg: rgba(2, 132, 199, 0.08);
   
-  --shadow-main: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --shadow-main: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
   --radius-lg: 16px;
   --radius-md: 12px;
   --radius-sm: 8px;
@@ -81,8 +81,8 @@ h1, h2, h3, h4, h5, h6, .brand-logo, .metric-value {
 .sidebar {
   width: 280px;
   background-color: var(--bg-sidebar);
-  border-right: 1px solid var(--border-color);
-  padding: 2rem 1.5rem;
+  border-right: none;
+  padding: 2.25rem 1.5rem;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -92,29 +92,29 @@ h1, h2, h3, h4, h5, h6, .brand-logo, .metric-value {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .brand-logo {
   font-size: 1.5rem;
   font-weight: 700;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
 .brand-logo i {
-  -webkit-text-fill-color: var(--accent-primary);
+  color: var(--accent-secondary);
 }
 
 .brand-subtitle {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.73rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.4;
   margin-top: -0.25rem;
 }
 
@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6, .brand-logo, .metric-value {
   align-items: center;
   gap: 1rem;
   padding: 0.85rem 1.25rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
@@ -151,26 +151,25 @@ h1, h2, h3, h4, h5, h6, .brand-logo, .metric-value {
 }
 
 .nav-link:hover {
-  color: var(--color-text-main);
-  background-color: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.03);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .nav-item.active .nav-link {
-  color: var(--color-text-main);
-  background: rgba(129, 140, 248, 0.1);
-  border: 1px solid rgba(129, 140, 248, 0.25);
-  box-shadow: 0 0 15px rgba(129, 140, 248, 0.05);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nav-item.active .nav-link i {
-  color: var(--accent-primary);
+  color: var(--accent-secondary);
   transform: scale(1.1);
 }
 
 .sidebar-footer {
   margin-top: auto;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding-top: 1.5rem;
 }
 
@@ -184,23 +183,24 @@ h1, h2, h3, h4, h5, h6, .brand-logo, .metric-value {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--accent-gradient);
+  background: var(--accent-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 0.9rem;
-  color: #fff;
+  color: #0f172a;
 }
 
 .partner-details h4 {
   font-size: 0.85rem;
   font-weight: 600;
+  color: #ffffff;
 }
 
 .partner-details p {
   font-size: 0.7rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* Main Content Area */
@@ -1134,5 +1134,79 @@ h1, h2, h3, h4, h5, h6, .brand-logo, .metric-value {
   .metrics-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Card Light Theme Overrides (White cards on dark page background) */
+.widget-card, .metric-card, .stat-card, .feedback-card, .custom-table, .caregiver-detail-modal {
+  color: #1e293b !important;
+}
+
+.widget-card h3, .metric-card h3, .stat-card h3, .widget-title h3, .feedback-card h4, .caregiver-detail-modal h3 {
+  color: #0f172a !important;
+}
+
+.widget-card p, .metric-card p, .stat-card p, .widget-title p, .feedback-card p {
+  color: #475569 !important;
+}
+
+/* Make sure text in filters and selectors is dark and has a white background */
+.custom-multiselect, .filter-select, .search-input, .pagination-info, .pagination-btn {
+  color: #1e293b !important;
+  background-color: #ffffff !important;
+}
+
+.custom-multiselect {
+  border: 1px solid rgba(2, 55, 127, 0.15) !important;
+}
+
+.multiselect-trigger {
+  color: #1e293b !important;
+}
+
+.multiselect-options {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(2, 55, 127, 0.15) !important;
+}
+
+.option-label {
+  color: #1e293b !important;
+}
+
+.search-input {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border: 1px solid rgba(2, 55, 127, 0.15) !important;
+}
+
+.search-input::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Custom Table Text Colors */
+.custom-table th {
+  background-color: rgba(2, 55, 127, 0.05) !important;
+  color: #0f172a !important;
+}
+
+.custom-table td {
+  color: #334155 !important;
+}
+
+.custom-table tbody tr:hover {
+  background-color: rgba(2, 55, 127, 0.03) !important;
+}
+
+.caregiver-detail-modal {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(2, 55, 127, 0.15) !important;
+}
+
+.modal-section {
+  border-bottom: 1px solid rgba(2, 55, 127, 0.08) !important;
+}
+
+/* Adjust mobile hamburger toggle button to always be visible on dark background */
+.mobile-menu-toggle {
+  color: #f3f4f6 !important;
 }
 

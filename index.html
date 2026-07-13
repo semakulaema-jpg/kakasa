@@ -12,7 +12,7 @@
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Style Sheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=1.1">
 </head>
 <body>
 
@@ -21,16 +21,14 @@
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
       <div class="brand-container">
-        <div class="brand-logo" style="font-size: 1.25rem; line-height: 1.3; font-weight:700;">
-          <i class="fas fa-shield-virus" style="margin-right: 0.25rem;"></i> Kakasa! Buuli Mwana
+        <div class="brand-logo" style="width: 100%; display: flex; align-items: center; justify-content: flex-start;">
+          <img src="logo.png" alt="Kakasa! Buli Mwana, Buli Dose" style="width: 100%; max-width: 210px; height: auto; display: block; border-radius: 6px; background: white; padding: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
         </div>
         <button class="mobile-menu-close" id="menu-close-btn" aria-label="Close menu">
           <i class="fas fa-times"></i>
         </button>
       </div>
-      <div class="brand-subtitle" style="margin-bottom: 1.5rem; text-transform: none; letter-spacing: normal; line-height: 1.4; font-size: 0.72rem; color: var(--color-text-dim);">
-        Media, Influencer & Community Engagement Campaign M&E Portal
-      </div>
+
       
       <nav class="nav-menu">
         <li class="nav-item active" data-tab="overview">
@@ -80,7 +78,7 @@
           <i class="fas fa-bars"></i>
         </button>
         <div class="header-title">
-          <h2 id="main-tab-title">Overview</h2>
+          <h2 id="main-tab-title"></h2>
           <p id="main-tab-subtitle"></p>
         </div>
         
@@ -462,43 +460,7 @@
       <section class="tab-view" id="tab-activities">
         <div class="activity-tracker-layout">
           
-          <!-- Activity Metrics -->
-          <div class="widget-card">
-            <div class="widget-header">
-              <div class="widget-title">
-                <h3><i class="fas fa-hourglass-half"></i> Campaign Action Plan Progress</h3>
-                <p>Overall workplan implementation schedule status (May - July 2026)</p>
-              </div>
-              <span id="act-overall-progress" style="font-weight:700; font-family:'Outfit'; font-size:1.1rem; color:var(--accent-primary)">0%</span>
-            </div>
-            
-            <div class="progress-bar-container" style="height:8px;">
-              <div class="progress-bar" id="act-progress-bar" style="width: 0%"></div>
-            </div>
-            
-            <div class="activity-summary-metrics">
-              <div class="act-stat-card">
-                <p style="font-size:0.75rem; color:var(--color-text-muted);">Total Actions</p>
-                <div class="act-stat-val" id="act-stat-total">0</div>
-              </div>
-              <div class="act-stat-card">
-                <p style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fas fa-check-circle" style="color:var(--color-success)"></i> Completed</p>
-                <div class="act-stat-val" id="act-stat-completed">0</div>
-              </div>
-              <div class="act-stat-card">
-                <p style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fas fa-sync" style="color:var(--color-warning)"></i> In Progress</p>
-                <div class="act-stat-val" id="act-stat-inprogress">0</div>
-              </div>
-              <div class="act-stat-card">
-                <p style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fas fa-exclamation-triangle" style="color:var(--color-danger)"></i> Delayed</p>
-                <div class="act-stat-val" id="act-stat-delayed">0</div>
-              </div>
-              <div class="act-stat-card" style="display:none;">
-                <p style="font-size:0.75rem; color:var(--color-text-muted);">Not Started</p>
-                <div class="act-stat-val" id="act-stat-notstarted">0</div>
-              </div>
-            </div>
-          </div>
+
           
           <!-- Campaign Targets vs Actual Results -->
           <div class="widget-card">
@@ -514,72 +476,7 @@
             </div>
           </div>
           
-          <!-- Activities Table -->
-          <div class="widget-card">
-            <div class="widget-header">
-              <div class="widget-title">
-                <h3><i class="fas fa-clipboard-list"></i> Activity Implementation Schedule</h3>
-                <p>Task status, responsible lead, and timeline</p>
-              </div>
-            </div>
-            
-            <div class="table-responsive">
-              <table class="custom-table" id="activities-table">
-                <thead>
-                  <tr>
-                    <th style="width: 5%">No.</th>
-                    <th style="width: 10%">Phase</th>
-                    <th style="width: 40%">Activity Description</th>
-                    <th style="width: 15%">Responsible</th>
-                    <th style="width: 10%">District</th>
-                    <th style="width: 10%">Status</th>
-                    <th style="width: 10%">Progress</th>
-                  </tr>
-                </thead>
-                <tbody id="activities-table-body">
-                  <!-- Populated dynamically via app.js -->
-                </tbody>
-              </table>
-            </div>
-            
-            <div class="pagination-container">
-              <div class="pagination-info" id="act-page-info">Showing 0-0 of 0</div>
-              <div class="pagination-buttons">
-                <button class="pagination-btn" id="act-prev-btn" onclick="prevActPage()" disabled>Previous</button>
-                <button class="pagination-btn" id="act-next-btn" onclick="nextActPage()">Next</button>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Risks Matrix Table -->
-          <div class="widget-card">
-            <div class="widget-header">
-              <div class="widget-title">
-                <h3><i class="fas fa-shield-alt"></i> Risk and Adaptive Action Tracker</h3>
-                <p>Campaign implementation threats and mitigations</p>
-              </div>
-            </div>
-            
-            <div class="table-responsive">
-              <table class="custom-table">
-                <thead>
-                  <tr>
-                    <th style="width: 5%">No.</th>
-                    <th style="width: 15%">Risk Category</th>
-                    <th style="width: 25%">Risk Description</th>
-                    <th style="width: 10%">Likelihood</th>
-                    <th style="width: 10%">Impact</th>
-                    <th style="width: 10%">Risk Level</th>
-                    <th style="width: 20%">Mitigation Plan</th>
-                    <th style="width: 5%">Status</th>
-                  </tr>
-                </thead>
-                <tbody id="risks-table-body">
-                  <!-- Populated dynamically via app.js -->
-                </tbody>
-              </table>
-            </div>
-          </div>
+
           
         </div>
       </section>
@@ -609,8 +506,7 @@
                   <th style="width: 25%">Caregiver Name</th>
                   <th style="width: 10%">Age</th>
                   <th style="width: 15%">District</th>
-                  <th style="width: 15%">Sub-County</th>
-                  <th style="width: 15%">Village</th>
+                  <th style="width: 20%">Health Facility</th>
                   <th style="width: 15%">Baseline Status</th>
                   <th style="width: 10%">Children</th>
                 </tr>

@@ -425,7 +425,7 @@ function updateMetricCards() {
 function renderActiveTabContent() {
   const tabMetadata = {
     overview: {
-      title: "Overview",
+      title: "",
       subtitle: ""
     },
     followups: {
@@ -496,14 +496,14 @@ function renderOverviewCharts() {
         data: statusValues,
         backgroundColor: statusColors,
         borderWidth: 2,
-        borderColor: '#121528'
+        borderColor: '#ffffff'
       }]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { position: 'right', labels: { color: '#f3f4f6', font: { family: 'Inter' } } }
+        legend: { position: 'right', labels: { color: '#1e293b', font: { family: 'Inter' } } }
       },
       cutout: '65%'
     }
@@ -532,8 +532,8 @@ function renderOverviewCharts() {
       maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        x: { grid: { display: false }, ticks: { color: '#9ca3af' } },
-        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } }
+        x: { grid: { display: false }, ticks: { color: '#475569' } },
+        y: { grid: { color: 'rgba(2, 55, 127, 0.06)' }, ticks: { color: '#475569' } }
       }
     }
   });
@@ -572,10 +572,10 @@ function renderOverviewCharts() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { labels: { color: '#f3f4f6' } } },
+      plugins: { legend: { labels: { color: '#1e293b' } } },
       scales: {
-        x: { grid: { display: false }, ticks: { color: '#9ca3af', maxTicksLimit: 10 } },
-        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } }
+        x: { grid: { display: false }, ticks: { color: '#475569', maxTicksLimit: 10 } },
+        y: { grid: { color: 'rgba(2, 55, 127, 0.06)' }, ticks: { color: '#475569' } }
       }
     }
   });
@@ -608,8 +608,8 @@ function renderOverviewCharts() {
       maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } },
-        y: { grid: { display: false }, ticks: { color: '#9ca3af' } }
+        x: { grid: { color: 'rgba(2, 55, 127, 0.06)' }, ticks: { color: '#475569' } },
+        y: { grid: { display: false }, ticks: { color: '#475569' } }
       }
     }
   });
@@ -650,8 +650,8 @@ function renderOverviewCharts() {
       maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        x: { grid: { display: false }, ticks: { color: '#9ca3af' } },
-        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } }
+        x: { grid: { display: false }, ticks: { color: '#475569' } },
+        y: { grid: { color: 'rgba(2, 55, 127, 0.06)' }, ticks: { color: '#475569' } }
       }
     }
   });
@@ -1046,8 +1046,7 @@ function renderCaregiversTab() {
   if (searchVal) {
     list = list.filter(c => 
       c.name.toLowerCase().includes(searchVal) ||
-      c.subcounty.toLowerCase().includes(searchVal) ||
-      c.village.toLowerCase().includes(searchVal)
+      c.facility.toLowerCase().includes(searchVal)
     );
   }
   
@@ -1064,7 +1063,7 @@ function renderCaregiversTab() {
   if (paginatedList.length === 0) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="8" style="text-align:center; color:var(--color-text-dim); padding:40px;">
+        <td colspan="7" style="text-align:center; color:var(--color-text-dim); padding:40px;">
           <i class="fas fa-users-slash" style="font-size:2rem; margin-bottom:10px;"></i>
           <p>No caregivers found matching criteria.</p>
         </td>
@@ -1082,8 +1081,7 @@ function renderCaregiversTab() {
         <td><strong>${c.name}</strong></td>
         <td>${c.age}</td>
         <td>${c.district}</td>
-        <td>${c.subcounty}</td>
-        <td>${c.village}</td>
+        <td>${c.facility}</td>
         <td><span class="badge ${badgeClass}">${c.status}</span></td>
         <td>
           <div style="display:flex; flex-direction:column; gap:0.15rem">
