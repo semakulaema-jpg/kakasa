@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNICEF Zero-Dose Campaign Dashboard</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Monitoring & Evaluation dashboard for the UNICEF Kakasa Zero-Dose & Under-Immunised Campaign in Uganda. Developed by S4P.">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Style Sheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand-container">
+        <div class="brand-logo">
+          <i class="fas fa-heartbeat"></i> Kakasa M&E
+        </div>
+      </div>
+      <div class="brand-subtitle" style="margin-bottom: 1.5rem;">Campaign Analytics</div>
+      
+      <nav class="nav-menu">
+        <li class="nav-item active" data-tab="overview">
+          <a class="nav-link" id="nav-overview">
+            <i class="fas fa-chart-line"></i> Overview
+          </a>
+        </li>
+        <li class="nav-item" data-tab="followups">
+          <a class="nav-link" id="nav-followups">
+            <i class="fas fa-history"></i> Follow-Ups
+          </a>
+        </li>
+        <li class="nav-item" data-tab="myths">
+          <a class="nav-link" id="nav-myths">
+            <i class="fas fa-comment-medical"></i> Myths & Rumors
+          </a>
+        </li>
+        <li class="nav-item" data-tab="activities">
+          <a class="nav-link" id="nav-activities">
+            <i class="fas fa-tasks"></i> Activity Tracker
+          </a>
+        </li>
+        <li class="nav-item" data-tab="caregivers">
+          <a class="nav-link" id="nav-caregivers">
+            <i class="fas fa-users"></i> Caregiver Explorer
+          </a>
+        </li>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="partner-info">
+          <div class="partner-logo">S4P</div>
+          <div class="partner-details">
+            <h4>Solutions4People</h4>
+            <p>UNICEF Campaign Partner</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Header & Global Filters -->
+      <header class="header-container">
+        <div class="header-title">
+          <h2>UNICEF Uganda Zero-Dose Campaign</h2>
+          <p>Media, Influencer & Community Engagement Campaign M&E Portal</p>
+        </div>
+        
+        <div class="filters-panel">
+          <div class="filter-group">
+            <label>District:</label>
+            <div class="custom-multiselect" id="multiselect-district">
+              <button class="multiselect-trigger" id="district-trigger">
+                <span class="trigger-text" id="district-trigger-text">All Districts</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="multiselect-options" id="district-options-list">
+                <!-- Populated dynamically in app.js -->
+              </div>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <label>Defaulter Status:</label>
+            <div class="custom-multiselect" id="multiselect-status">
+              <button class="multiselect-trigger" id="status-trigger">
+                <span class="trigger-text" id="status-trigger-text">All Statuses</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="multiselect-options" id="status-options-list">
+                <label class="option-label">
+                  <input type="checkbox" class="status-checkbox" value="Under dose" checked> Under Dose
+                </label>
+                <label class="option-label">
+                  <input type="checkbox" class="status-checkbox" value="Zero dose" checked> Zero Dose
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-start-date">Start Date:</label>
+            <input type="date" id="filter-start-date" class="filter-select">
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-end-date">End Date:</label>
+            <input type="date" id="filter-end-date" class="filter-select">
+          </div>
+        </div>
+      </header>
+      
+      <!-- KPI Metric Cards Grid -->
+      <section class="metrics-grid">
+        <div class="metric-card primary">
+          <div class="metric-header">
+            <span class="metric-title">Caregivers Profiled</span>
+            <div class="metric-icon"><i class="fas fa-user-friends"></i></div>
+          </div>
+          <div class="metric-value" id="metric-caregivers">0</div>
+          <div class="metric-footer">
+            <i class="fas fa-info-circle"></i> VHT Household dialogue
+          </div>
+        </div>
+        
+        <div class="metric-card success">
+          <div class="metric-header">
+            <span class="metric-title">Total Children Profiled</span>
+            <div class="metric-icon"><i class="fas fa-child"></i></div>
+          </div>
+          <div class="metric-value" id="metric-children">0</div>
+          <div class="metric-footer">
+            <i class="fas fa-home"></i> Residing in households
+          </div>
+        </div>
+        
+        <div class="metric-card info">
+          <div class="metric-header">
+            <span class="metric-title">Target Kids (&lt;24 Months)</span>
+            <div class="metric-icon"><i class="fas fa-baby"></i></div>
+          </div>
+          <div class="metric-value" id="metric-children-u2">0</div>
+          <div class="metric-footer">
+            <i class="fas fa-bullseye"></i> Primary immunization target
+          </div>
+        </div>
+        
+        <div class="metric-card warning">
+          <div class="metric-header">
+            <span class="metric-title">Under-Dose Identified</span>
+            <div class="metric-icon"><i class="fas fa-syringe"></i></div>
+          </div>
+          <div class="metric-value" id="metric-underdose">0</div>
+          <div class="metric-footer">
+            <i class="fas fa-hourglass-half"></i> Partially immunised children
+          </div>
+        </div>
+
+        <div class="metric-card danger">
+          <div class="metric-header">
+            <span class="metric-title">Zero-Dose Identified</span>
+            <div class="metric-icon"><i class="fas fa-shield-virus"></i></div>
+          </div>
+          <div class="metric-value" id="metric-zerodose">0</div>
+          <div class="metric-footer">
+            <i class="fas fa-exclamation-circle"></i> Zero routine immunisation
+          </div>
+        </div>
+        
+        <div class="metric-card success">
+          <div class="metric-header">
+            <span class="metric-title">Follow-Ups Conducted</span>
+            <div class="metric-icon"><i class="fas fa-check-double"></i></div>
+          </div>
+          <div class="metric-value" id="metric-followups">0</div>
+          <div class="metric-footer">
+            <i class="fas fa-walking"></i> VHT verification visits
+          </div>
+        </div>
+
+        <div class="metric-card primary">
+          <div class="metric-header">
+            <span class="metric-title">Follow-Up Success Rate</span>
+            <div class="metric-icon"><i class="fas fa-chart-line"></i></div>
+          </div>
+          <div class="metric-value" id="metric-conversion">0.0%</div>
+          <div class="metric-footer">
+            <i class="fas fa-check-circle"></i> Caregivers caught up
+          </div>
+        </div>
+      </section>
+      
+      <!-- Tab View: Overview -->
+      <section class="tab-view active" id="tab-overview">
+        <div class="charts-grid-2x2">
+          <!-- Donut: Defaulter Status -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-chart-pie"></i> Vaccination Status</h3>
+                <p>Profiled child classification breakdown</p>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="chart-status"></canvas>
+            </div>
+          </div>
+          
+          <!-- Bar: Profiled per District -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-map-marker-alt"></i> Coverage by District</h3>
+                <p>Total caregivers reached in prioritized sub-counties</p>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="chart-districts"></canvas>
+            </div>
+          </div>
+          
+          <!-- Line: Timeline of Campaign -->
+          <div class="widget-card" style="grid-column: span 2;">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-history"></i> Profiling Timeline</h3>
+                <p>Daily progression of households registered by VHTs (June - July 2026)</p>
+              </div>
+            </div>
+            <div class="chart-wrapper" style="height: 320px;">
+              <canvas id="chart-timeline"></canvas>
+            </div>
+          </div>
+          
+          <!-- Horizontal Bar: Barriers / Challenges -->
+          <div class="widget-card" style="grid-column: span 2;">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-hand-holding-medical"></i> Key Immunisation Challenges</h3>
+                <p>Self-reported barriers preventing routine vaccine completion</p>
+              </div>
+            </div>
+            <div class="chart-wrapper" style="height: 320px;">
+              <canvas id="chart-challenges"></canvas>
+            </div>
+          </div>
+          
+          <!-- Drop-off Points Bar Chart -->
+          <div class="widget-card" style="grid-column: span 2;">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-chart-line"></i> Immunisation Drop-Off Milestones</h3>
+                <p>Latest vaccination milestones completed by children before dropping off schedule (from baseline)</p>
+              </div>
+            </div>
+            <div class="chart-wrapper" style="height: 320px;">
+              <canvas id="chart-milestones"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Tab View: Follow-Ups -->
+      <section class="tab-view" id="tab-followups">
+        <div class="widget-card">
+          <div class="widget-header">
+            <div class="widget-title">
+              <h3><i class="fas fa-check-double"></i> Follow-Up Verification Outcomes</h3>
+              <p>Evaluating impact of VHT reminder slips and outreach catchups (107 verified follow-up visits)</p>
+            </div>
+          </div>
+          
+          <div class="followups-dashboard">
+            <!-- Left: Conversion Funnel -->
+            <div class="funnel-container">
+              <div class="funnel-step">
+                <div class="funnel-label">
+                  <span class="funnel-title">Step 1: Households Profiled</span>
+                  <span class="funnel-desc">Identified baseline defaulters</span>
+                </div>
+                <span class="funnel-value" id="funnel-profiled">0</span>
+              </div>
+              
+              <div class="funnel-step">
+                <div class="funnel-label">
+                  <span class="funnel-title">Step 2: Target Zero-Dose</span>
+                  <span class="funnel-desc">Most vulnerable classification</span>
+                </div>
+                <span class="funnel-value" id="funnel-zerodose">0</span>
+              </div>
+              
+              <div class="funnel-step">
+                <div class="funnel-label">
+                  <span class="funnel-title">Step 3: Verification Visits</span>
+                  <span class="funnel-desc">Targeted VHT follow-ups conducted</span>
+                </div>
+                <span class="funnel-value" id="funnel-visited">0</span>
+              </div>
+              
+              <div class="funnel-step">
+                <div class="funnel-label">
+                  <span class="funnel-title">Step 4: Back on Track / Caught Up</span>
+                  <span class="funnel-desc">Child received overdue vaccines and resumed routine schedule</span>
+                </div>
+                <span class="funnel-value" id="funnel-caughtup">0</span>
+              </div>
+            </div>
+            
+            <!-- Right: Outcomes Chart & Details -->
+            <div style="display:flex; flex-direction:column; gap:1.5rem; justify-content:center; align-items:center; flex: 1;">
+              <div style="text-align: center; padding: 20px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 8px; width: 100%; max-width: 320px;">
+                <h4 style="font-size: 1.1rem; font-weight:600; margin-bottom:0.25rem;">Follow-Up Coverage Details</h4>
+                <p style="font-size:0.8rem; color:var(--color-text-muted)">
+                  Total visits: <span id="fu-total-count" style="font-weight:600; color:var(--color-text-main)">0</span> | 
+                  Back on Track: <span id="fu-success-count" style="font-weight:600; color:var(--color-success)">0</span>
+                </p>
+                <p style="font-size:0.75rem; color:var(--color-text-muted); margin-top: 0.25rem;">
+                  Under-dose: <span id="fu-under-count" style="font-weight:600; color:var(--color-warning)">0</span> | 
+                  Zero-dose: <span id="fu-zero-count" style="font-weight:600; color:var(--color-danger)">0</span>
+                </p>
+                <div style="font-size: 2.5rem; font-weight:700; font-family:'Outfit',sans-serif; color:var(--color-success); margin-top:0.75rem;" id="fu-conversion-rate">0.0%</div>
+                <p style="font-size: 0.75rem; color: var(--color-text-dim);">Overall Defaulter Follow-up Rate</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card Retrieval & Conversion Details -->
+          <div class="widget-card" style="margin-top: 2rem;">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-id-card"></i> Immunisation Card Retrieval & Conversion</h3>
+                <p>Comparing card availability from baseline profile to VHT follow-up verification (338 visits)</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:1rem;">
+              <div class="act-stat-card" style="flex:1; min-width:140px;">
+                <p style="font-size:0.75rem; color:var(--color-text-muted);">Baseline Missing Cards</p>
+                <div class="act-stat-val" style="color:var(--color-danger);" id="card-base-missing">0</div>
+              </div>
+              <div class="act-stat-card" style="flex:1; min-width:140px;">
+                <p style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fas fa-check-circle" style="color:var(--color-success)"></i> Cards Retrieved/Issued</p>
+                <div class="act-stat-val" style="color:var(--color-success);" id="card-retrieved">0</div>
+              </div>
+              <div class="act-stat-card" style="flex:1; min-width:140px;">
+                <p style="font-size:0.75rem; color:var(--color-text-muted);">Still Missing after Visit</p>
+                <div class="act-stat-val" style="color:var(--color-warning);" id="card-still-missing">0</div>
+              </div>
+              <div class="act-stat-card" style="flex:1; min-width:140px;">
+                <p style="font-size:0.75rem; color:var(--color-text-muted);">Pre-existing Cards</p>
+                <div class="act-stat-val" style="color:var(--color-text-main);" id="card-preexisting">0</div>
+              </div>
+            </div>
+            <div style="margin-top: 1.5rem; display:flex; flex-direction:column; gap:0.5rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+                <span>Missing Card Retrieval / Conversion Success Rate</span>
+                <strong style="color:var(--color-success);" id="card-retrieval-rate">0.0%</strong>
+              </div>
+              <div class="progress-bar-container" style="height:10px; background:rgba(255,255,255,0.03); margin:0;">
+                <div class="progress-bar" style="width: 0%; background: var(--color-success);" id="card-retrieval-bar"></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- New Table for Linked Follow-ups -->
+          <div class="widget-card" style="margin-top: 2rem;">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-link"></i> Linked Follow-Up Caregiver Outcomes</h3>
+                <p>Caregivers tracked from baseline to follow-up visits based on unique index matching</p>
+              </div>
+            </div>
+            
+            <div class="table-responsive">
+              <table class="custom-table" id="linked-followups-table">
+                <thead>
+                  <tr>
+                    <th style="width: 5%">Index</th>
+                    <th style="width: 25%">Caregiver Name</th>
+                    <th style="width: 20%">District</th>
+                    <th style="width: 15%">Baseline Status</th>
+                    <th style="width: 30%">Baseline Barriers (Challenges)</th>
+                    <th style="width: 5%">Card?</th>
+                  </tr>
+                </thead>
+                <tbody id="linked-followups-table-body">
+                  <!-- Populated dynamically via app.js -->
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="pagination-container">
+              <div class="pagination-info" id="fu-linked-page-info">Showing 0-0 of 0</div>
+              <div class="pagination-buttons">
+                <button class="pagination-btn" id="fu-linked-prev-btn" onclick="prevFuLinkedPage()" disabled>Previous</button>
+                <button class="pagination-btn" id="fu-linked-next-btn" onclick="nextFuLinkedPage()">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Tab View: Myths & Rumors -->
+      <section class="tab-view" id="tab-myths">
+        <div class="widget-card">
+          <div class="widget-header">
+            <div class="widget-title">
+              <h3><i class="fas fa-bullhorn"></i> Myths, Rumors & Caregiver Concerns Feed</h3>
+              <p>Qualitative field reports gathered by VHTs during household dialogues</p>
+            </div>
+          </div>
+          
+          <div class="search-bar-container">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search"></i>
+              <input type="text" id="myths-search" class="search-input" placeholder="Search keywords (e.g. sterile, fear, side effects)..." oninput="searchMyths()">
+            </div>
+            
+            <div style="display:flex; gap:0.5rem; flex-shrink:0;">
+              <select id="myths-type" class="filter-select" onchange="searchMyths()" style="height:100%">
+                <option value="all">All Feedback Types</option>
+                <option value="myth">Myths & Rumors</option>
+                <option value="question">Questions Raised</option>
+                <option value="complaint">Service Complaints</option>
+                <option value="success">Success Stories</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="feedback-grid" id="myths-feed">
+            <!-- Populated dynamically via app.js -->
+          </div>
+          
+          <div class="pagination-container">
+            <div class="pagination-info" id="myths-page-info">Showing 0-0 of 0</div>
+            <div class="pagination-buttons">
+              <button class="pagination-btn" id="myths-prev-btn" onclick="prevMythsPage()" disabled>Previous</button>
+              <button class="pagination-btn" id="myths-next-btn" onclick="nextMythsPage()">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Tab View: Activity Tracker -->
+      <section class="tab-view" id="tab-activities">
+        <div class="activity-tracker-layout">
+          
+          <!-- Activity Metrics -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-hourglass-half"></i> Campaign Action Plan Progress</h3>
+                <p>Overall workplan implementation schedule status (May - July 2026)</p>
+              </div>
+              <span id="act-overall-progress" style="font-weight:700; font-family:'Outfit'; font-size:1.1rem; color:var(--accent-primary)">0%</span>
+            </div>
+            
+            <div class="progress-bar-container" style="height:8px;">
+              <div class="progress-bar" id="act-progress-bar" style="width: 0%"></div>
+            </div>
+            
+            <div class="activity-summary-metrics">
+              <div class="act-stat-card">
+                <p style="font-size:0.75rem; color:var(--color-text-muted);">Total Actions</p>
+                <div class="act-stat-val" id="act-stat-total">0</div>
+              </div>
+              <div class="act-stat-card">
+                <p style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fas fa-check-circle" style="color:var(--color-success)"></i> Completed</p>
+                <div class="act-stat-val" id="act-stat-completed">0</div>
+              </div>
+              <div class="act-stat-card">
+                <p style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fas fa-sync" style="color:var(--color-warning)"></i> In Progress</p>
+                <div class="act-stat-val" id="act-stat-inprogress">0</div>
+              </div>
+              <div class="act-stat-card">
+                <p style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fas fa-exclamation-triangle" style="color:var(--color-danger)"></i> Delayed</p>
+                <div class="act-stat-val" id="act-stat-delayed">0</div>
+              </div>
+              <div class="act-stat-card" style="display:none;">
+                <p style="font-size:0.75rem; color:var(--color-text-muted);">Not Started</p>
+                <div class="act-stat-val" id="act-stat-notstarted">0</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Campaign Targets vs Actual Results -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-bullseye"></i> Campaign Implementation Targets vs. Actual Results</h3>
+                <p>Linking operational workplan targets directly with field coverage metrics from Kakasa campaign data</p>
+              </div>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; gap:1.5rem;" id="targets-comparison-container">
+              <!-- Rendered dynamically in app.js -->
+            </div>
+          </div>
+          
+          <!-- Activities Table -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-clipboard-list"></i> Activity Implementation Schedule</h3>
+                <p>Task status, responsible lead, and timeline</p>
+              </div>
+            </div>
+            
+            <div class="table-responsive">
+              <table class="custom-table" id="activities-table">
+                <thead>
+                  <tr>
+                    <th style="width: 5%">No.</th>
+                    <th style="width: 10%">Phase</th>
+                    <th style="width: 40%">Activity Description</th>
+                    <th style="width: 15%">Responsible</th>
+                    <th style="width: 10%">District</th>
+                    <th style="width: 10%">Status</th>
+                    <th style="width: 10%">Progress</th>
+                  </tr>
+                </thead>
+                <tbody id="activities-table-body">
+                  <!-- Populated dynamically via app.js -->
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="pagination-container">
+              <div class="pagination-info" id="act-page-info">Showing 0-0 of 0</div>
+              <div class="pagination-buttons">
+                <button class="pagination-btn" id="act-prev-btn" onclick="prevActPage()" disabled>Previous</button>
+                <button class="pagination-btn" id="act-next-btn" onclick="nextActPage()">Next</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Risks Matrix Table -->
+          <div class="widget-card">
+            <div class="widget-header">
+              <div class="widget-title">
+                <h3><i class="fas fa-shield-alt"></i> Risk and Adaptive Action Tracker</h3>
+                <p>Campaign implementation threats and mitigations</p>
+              </div>
+            </div>
+            
+            <div class="table-responsive">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th style="width: 5%">No.</th>
+                    <th style="width: 15%">Risk Category</th>
+                    <th style="width: 25%">Risk Description</th>
+                    <th style="width: 10%">Likelihood</th>
+                    <th style="width: 10%">Impact</th>
+                    <th style="width: 10%">Risk Level</th>
+                    <th style="width: 20%">Mitigation Plan</th>
+                    <th style="width: 5%">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="risks-table-body">
+                  <!-- Populated dynamically via app.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+      
+      <!-- Tab View: Caregiver Explorer -->
+      <section class="tab-view" id="tab-caregivers">
+        <div class="widget-card">
+          <div class="widget-header">
+            <div class="widget-title">
+              <h3><i class="fas fa-id-card"></i> Registered Caregiver Records</h3>
+              <p>Complete directory of profiled caregivers and child targets</p>
+            </div>
+          </div>
+          
+          <div class="search-bar-container">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search"></i>
+              <input type="text" id="caregiver-search" class="search-input" placeholder="Search caregiver by name or location..." oninput="searchCaregivers()">
+            </div>
+          </div>
+          
+          <div class="table-responsive">
+            <table class="custom-table" id="caregivers-table">
+              <thead>
+                <tr>
+                  <th style="width: 5%">No.</th>
+                  <th style="width: 25%">Caregiver Name</th>
+                  <th style="width: 10%">Age</th>
+                  <th style="width: 15%">District</th>
+                  <th style="width: 15%">Sub-County</th>
+                  <th style="width: 15%">Village</th>
+                  <th style="width: 15%">Baseline Status</th>
+                  <th style="width: 10%">Children</th>
+                </tr>
+              </thead>
+              <tbody id="caregivers-table-body">
+                <!-- Populated dynamically via app.js -->
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="pagination-container">
+            <div class="pagination-info" id="caregiver-page-info">Showing 0-0 of 0</div>
+            <div class="pagination-buttons">
+              <button class="pagination-btn" id="caregiver-prev-btn" onclick="prevCaregiverPage()" disabled>Previous</button>
+              <button class="pagination-btn" id="caregiver-next-btn" onclick="nextCaregiverPage()">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+  </div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
