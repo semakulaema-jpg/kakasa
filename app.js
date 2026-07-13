@@ -425,24 +425,24 @@ function updateMetricCards() {
 function renderActiveTabContent() {
   const tabMetadata = {
     overview: {
-      title: "",
+      title: "Overview",
       subtitle: ""
     },
     followups: {
-      title: "Follow-Up Outcomes",
-      subtitle: "Evaluating VHT verification outcomes & catch-up rates"
+      title: "Follow-Ups",
+      subtitle: ""
     },
     myths: {
-      title: "Myths & Rumors Captured",
-      subtitle: "Caregiver feedback, complaints, and questions"
+      title: "Myths & Rumors",
+      subtitle: ""
     },
     activities: {
       title: "Activity Tracker",
-      subtitle: "Monitoring milestone targets vs campaign actuals"
+      subtitle: ""
     },
     caregivers: {
       title: "Caregiver Explorer",
-      subtitle: "Complete directory of profiled households and target children"
+      subtitle: ""
     }
   };
 
@@ -496,14 +496,14 @@ function renderOverviewCharts() {
         data: statusValues,
         backgroundColor: statusColors,
         borderWidth: 2,
-        borderColor: '#ffffff'
+        borderColor: '#121528'
       }]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { position: 'right', labels: { color: '#1e293b', font: { family: 'Inter' } } }
+        legend: { position: 'right', labels: { color: '#f3f4f6', font: { family: 'Inter' } } }
       },
       cutout: '65%'
     }
@@ -523,7 +523,7 @@ function renderOverviewCharts() {
       datasets: [{
         label: 'Caregivers Profiled',
         data: distValues,
-        backgroundColor: accentPrimary,
+        backgroundColor: ['#027529', '#fdc247', '#a50241'],
         borderRadius: 6
       }]
     },
@@ -532,8 +532,8 @@ function renderOverviewCharts() {
       maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        x: { grid: { display: false }, ticks: { color: '#475569' } },
-        y: { grid: { color: 'rgba(2, 55, 127, 0.06)' }, ticks: { color: '#475569' } }
+        x: { grid: { display: false }, ticks: { color: '#9ca3af' } },
+        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } }
       }
     }
   });
@@ -572,10 +572,10 @@ function renderOverviewCharts() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { labels: { color: '#1e293b' } } },
+      plugins: { legend: { labels: { color: '#f3f4f6' } } },
       scales: {
-        x: { grid: { display: false }, ticks: { color: '#475569', maxTicksLimit: 10 } },
-        y: { grid: { color: 'rgba(2, 55, 127, 0.06)' }, ticks: { color: '#475569' } }
+        x: { grid: { display: false }, ticks: { color: '#9ca3af', maxTicksLimit: 10 } },
+        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } }
       }
     }
   });
@@ -598,7 +598,7 @@ function renderOverviewCharts() {
       datasets: [{
         label: 'Caregivers Reporting',
         data: chalList.map(x => x.val),
-        backgroundColor: accentSecondary,
+        backgroundColor: ['#027529', '#fdc247', '#a50241'],
         borderRadius: 4
       }]
     },
@@ -608,8 +608,8 @@ function renderOverviewCharts() {
       maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        x: { grid: { color: 'rgba(2, 55, 127, 0.06)' }, ticks: { color: '#475569' } },
-        y: { grid: { display: false }, ticks: { color: '#475569' } }
+        x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } },
+        y: { grid: { display: false }, ticks: { color: '#9ca3af' } }
       }
     }
   });
@@ -641,7 +641,7 @@ function renderOverviewCharts() {
       datasets: [{
         label: 'Children Reached Before Drop-Off',
         data: mValues,
-        backgroundColor: accentPrimary,
+        backgroundColor: ['#027529', '#fdc247', '#a50241'],
         borderRadius: 4
       }]
     },
@@ -650,8 +650,8 @@ function renderOverviewCharts() {
       maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        x: { grid: { display: false }, ticks: { color: '#475569' } },
-        y: { grid: { color: 'rgba(2, 55, 127, 0.06)' }, ticks: { color: '#475569' } }
+        x: { grid: { display: false }, ticks: { color: '#9ca3af' } },
+        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } }
       }
     }
   });
@@ -899,91 +899,8 @@ function nextMythsPage() {
 
 // Render Activities & Risks tab content
 function renderActivitiesTab() {
-  // 1. Calculate Activity Tracker Aggregates
-  const totalActivities = rawData.activities.length;
-  const completed = rawData.activities.filter(a => a.status === 'Completed').length;
-  const inProgress = rawData.activities.filter(a => a.status === 'In Progress').length;
-  const delayed = rawData.activities.filter(a => a.status === 'Delayed').length;
-  const notStarted = rawData.activities.filter(a => a.status === 'Not Started').length;
-  const overallProgress = totalActivities > 0 ? Math.round((completed / totalActivities) * 100) : 0;
-  
-  document.getElementById('act-overall-progress').textContent = `${overallProgress}%`;
-  document.getElementById('act-progress-bar').style.width = `${overallProgress}%`;
-  
-  document.getElementById('act-stat-total').textContent = totalActivities;
-  document.getElementById('act-stat-completed').textContent = completed;
-  document.getElementById('act-stat-inprogress').textContent = inProgress;
-  document.getElementById('act-stat-delayed').textContent = delayed;
-  document.getElementById('act-stat-notstarted').textContent = notStarted;
-  
   // Render Target vs Actual Results comparison
   renderTargetsComparison();
-
-  
-  // Render Activities Table
-  const tbody = document.getElementById('activities-table-body');
-  tbody.innerHTML = '';
-  
-  let acts = [...rawData.activities];
-  
-  // Paginate activities
-  const totalActs = acts.length;
-  const totalPages = Math.ceil(totalActs / itemsPerPage) || 1;
-  const startIndex = (activityPage - 1) * itemsPerPage;
-  const paginatedActs = acts.slice(startIndex, startIndex + itemsPerPage);
-  
-  paginatedActs.forEach(act => {
-    let badgeClass = 'badge-warning';
-    if (act.status === 'Completed') badgeClass = 'badge-success';
-    else if (act.status === 'Delayed') badgeClass = 'badge-danger';
-    else if (act.status === 'Not Started') badgeClass = 'badge-info';
-    
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${act.id}</td>
-      <td><span class="badge badge-success" style="font-size:0.65rem">${act.phase}</span></td>
-      <td><strong>${act.activity}</strong><br><span style="font-size:0.75rem; color:var(--color-text-muted)">${act.sub_activity}</span></td>
-      <td>${act.responsible}</td>
-      <td>${act.district}</td>
-      <td><span class="badge ${badgeClass}">${act.status}</span></td>
-      <td>
-        <div style="display:flex; align-items:center; gap:0.5rem">
-          <span>${act.progress}%</span>
-          <div class="progress-bar-container" style="width:50px; margin:0">
-            <div class="progress-bar" style="width:${act.progress}%"></div>
-          </div>
-        </div>
-      </td>
-    `;
-    tbody.appendChild(tr);
-  });
-  
-  document.getElementById('act-page-info').textContent = `Showing ${Math.min(startIndex + 1, totalActs)} - ${Math.min(startIndex + itemsPerPage, totalActs)} of ${totalActs}`;
-  document.getElementById('act-prev-btn').disabled = activityPage === 1;
-  document.getElementById('act-next-btn').disabled = activityPage === totalPages;
-
-  // Render Risks Table
-  const riskBody = document.getElementById('risks-table-body');
-  riskBody.innerHTML = '';
-  
-  rawData.risks.forEach(risk => {
-    let riskBadge = 'badge-success';
-    if (risk.level === 'High') riskBadge = 'badge-danger';
-    else if (risk.level === 'Medium') riskBadge = 'badge-warning';
-    
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${risk.no}</td>
-      <td><span class="badge badge-info">${risk.category}</span></td>
-      <td><strong>${risk.description}</strong></td>
-      <td>${risk.likelihood}</td>
-      <td>${risk.impact}</td>
-      <td><span class="badge ${riskBadge}">${risk.level}</span></td>
-      <td><span style="font-size:0.8rem; color:var(--color-text-muted)">${risk.mitigation}</span></td>
-      <td><span class="badge badge-success">${risk.status}</span></td>
-    `;
-    riskBody.appendChild(tr);
-  });
 }
 
 function renderTargetsComparison() {
