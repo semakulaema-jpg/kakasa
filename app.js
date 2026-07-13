@@ -40,8 +40,38 @@ let milestonesChart = null;
 document.addEventListener('DOMContentLoaded', () => {
   setupTabNavigation();
   setupFilterListeners();
+  setupMobileMenuListeners();
   loadData();
 });
+
+// Setup Mobile Menu Drawer
+function setupMobileMenuListeners() {
+  const toggleBtn = document.getElementById('menu-toggle-btn');
+  const closeBtn = document.getElementById('menu-close-btn');
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  
+  if (toggleBtn && closeBtn && sidebar && overlay) {
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+    });
+    
+    const closeMenu = () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    };
+    
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    
+    // Close menu when navigation option selected on mobile
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      item.addEventListener('click', closeMenu);
+    });
+  }
+}
 
 // Load Data from JSON
 async function loadData() {
@@ -393,6 +423,37 @@ function updateMetricCards() {
 
 // Render active tab contents
 function renderActiveTabContent() {
+  const tabMetadata = {
+    overview: {
+      title: "Overview",
+      subtitle: ""
+    },
+    followups: {
+      title: "Follow-Up Outcomes",
+      subtitle: "Evaluating VHT verification outcomes & catch-up rates"
+    },
+    myths: {
+      title: "Myths & Rumors Captured",
+      subtitle: "Caregiver feedback, complaints, and questions"
+    },
+    activities: {
+      title: "Activity Tracker",
+      subtitle: "Monitoring milestone targets vs campaign actuals"
+    },
+    caregivers: {
+      title: "Caregiver Explorer",
+      subtitle: "Complete directory of profiled households and target children"
+    }
+  };
+
+  const meta = tabMetadata[activeTab];
+  if (meta) {
+    const titleEl = document.getElementById('main-tab-title');
+    const subtitleEl = document.getElementById('main-tab-subtitle');
+    if (titleEl) titleEl.textContent = meta.title;
+    if (subtitleEl) subtitleEl.textContent = meta.subtitle;
+  }
+
   if (activeTab === 'overview') {
     renderOverviewCharts();
   } else if (activeTab === 'followups') {

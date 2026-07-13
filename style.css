@@ -1004,3 +1004,135 @@ h1, h2, h3, h4, h5, h6, .brand-logo, .metric-value {
   cursor: pointer;
 }
 
+/* Mobile Responsive Sidebar Menu & Drawer Styles */
+.mobile-menu-toggle, .mobile-menu-close {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text-main);
+  font-size: 1.35rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: var(--transition-fast);
+  border-radius: var(--radius-sm);
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-toggle:hover, .mobile-menu-close:hover {
+  color: var(--accent-primary);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(4, 6, 15, 0.7);
+  backdrop-filter: blur(3px);
+  z-index: 1999;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .app-container {
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -280px;
+    width: 280px;
+    z-index: 2000;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.55);
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .mobile-menu-close {
+    display: flex;
+  }
+
+  .brand-container {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  .main-content {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .header-title {
+    order: 2;
+    flex: 1 1 100%;
+  }
+  
+  .mobile-menu-toggle {
+    order: 1;
+  }
+  
+  .filters-panel {
+    order: 3;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem;
+  }
+  
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+  }
+  
+  .custom-multiselect, .filter-select {
+    width: 100%;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .charts-grid-2x2 {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .followups-dashboard {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
