@@ -378,9 +378,16 @@ function applyFilters() {
   
   if (rawData.linked_followups) {
     const activeDistsLower = activeDistricts.map(d => d.toLowerCase());
-    const filteredFollowups = rawData.linked_followups.filter(item => 
+    let filteredFollowups = rawData.linked_followups.filter(item => 
       activeDistsLower.includes(item.district.toLowerCase())
     );
+    
+    if (activeStartDate) {
+      filteredFollowups = filteredFollowups.filter(item => !item.date || item.date >= activeStartDate);
+    }
+    if (activeEndDate) {
+      filteredFollowups = filteredFollowups.filter(item => !item.date || item.date <= activeEndDate);
+    }
     
     fl_total = filteredFollowups.length;
     filteredFollowups.forEach(item => {
@@ -705,6 +712,14 @@ function renderLinkedFollowups() {
   // Filter linked follow-ups by selected districts
   list = list.filter(item => activeDistricts.map(d => d.toLowerCase()).includes(item.district.toLowerCase()));
   
+  // Filter linked follow-ups by date range
+  if (activeStartDate) {
+    list = list.filter(item => !item.date || item.date >= activeStartDate);
+  }
+  if (activeEndDate) {
+    list = list.filter(item => !item.date || item.date <= activeEndDate);
+  }
+  
   // Pagination
   const totalItems = list.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
@@ -759,10 +774,14 @@ function prevFuLinkedPage() {
 function nextFuLinkedPage() {
   if (!rawData || !rawData.linked_followups) return;
   let list = [...rawData.linked_followups];
-  if (activeDistrict !== 'all') {
-    list = list.filter(item => item.district.toLowerCase() === activeDistrict.toLowerCase());
+  list = list.filter(item => activeDistricts.map(d => d.toLowerCase()).includes(item.district.toLowerCase()));
+  if (activeStartDate) {
+    list = list.filter(item => !item.date || item.date >= activeStartDate);
   }
-  const totalPages = Math.ceil(list.length / itemsPerPage);
+  if (activeEndDate) {
+    list = list.filter(item => !item.date || item.date <= activeEndDate);
+  }
+  const totalPages = Math.ceil(list.length / itemsPerPage) || 1;
   if (fuLinkedPage < totalPages) {
     fuLinkedPage++;
     renderLinkedFollowups();
@@ -925,8 +944,20 @@ function renderTargetsComparison() {
   const container = document.getElementById('targets-comparison-container');
   container.innerHTML = '';
   
+  const isFiltered = activeStartDate || activeEndDate || (rawData.district_counts && activeDistricts.length < Object.keys(rawData.district_counts).length);
+  
   rawData.activity_targets.forEach(item => {
-    const percentage = Math.round((item.actual / item.target) * 100);
+    let actualCount = item.actual;
+    // When date/district filters are active, adapt actuals dynamically
+    if (isFiltered) {
+      if (item.id === 56 && filteredCaregivers) {
+        actualCount = filteredCaregivers.length;
+      } else if (item.id === 62 && filteredFeedback) {
+        actualCount = filteredFeedback.length;
+      }
+    }
+    
+    const percentage = Math.round((actualCount / item.target) * 100);
     const progressWidth = Math.min(percentage, 100);
     
     const div = document.createElement('div');
@@ -941,7 +972,7 @@ function renderTargetsComparison() {
           <strong>${item.description}</strong>
         </div>
         <div style="font-weight:600; text-align:right;">
-          <span style="color:var(--color-success);">${item.actual.toLocaleString()}</span> / ${item.target.toLocaleString()} ${item.unit}
+          <span style="color:var(--color-success);">${actualCount.toLocaleString()}</span> / ${item.target.toLocaleString()} ${item.unit}
           <span style="font-size:0.75rem; color:var(--color-text-muted); margin-left:0.5rem;">(${percentage}%)</span>
         </div>
       </div>
@@ -956,73 +987,85 @@ function renderTargetsComparison() {
 function renderActivitiesReachSection() {
   if (!rawData) return;
   
-  // If activities_reach_list is not yet in rawData (e.g. cached JSON), build it dynamically
-  if (!rawData.activities_reach_list) {
-    const totalCaregivers = rawData.total_caregivers || 4100;
-    const totalChildren = rawData.total_children || 10687;
-    const distNames = rawData.district_counts ? Object.keys(rawData.district_counts) : ['Kamuli', 'Kampala', 'Mukono', 'Wakiso'];
-    
-    rawData.activities_reach_list = [
-      { category: 'Below The Line (BTL)', type: 'Household Visits', sessions: totalCaregivers, districts: distNames, people_reached: totalCaregivers, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: totalChildren, materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
-      { category: 'Below The Line (BTL)', type: 'Baseline Data Collection', sessions: 231, districts: distNames, people_reached: 231, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: 400, materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
-      { category: 'Below The Line (BTL)', type: 'Community Activations', sessions: 2, districts: ['Kamuli', 'Mukono'], people_reached: 1015, adult_females: 415, adult_males: 260, young_females: 190, young_males: 150, children_reached: 0, materials: { cards: 0, slips: 72, posters: 30, flyers: 0 } },
-      { category: 'Below The Line (BTL)', type: 'Bead Session', sessions: 5, districts: ['Kamuli', 'Mukono', 'Wakiso'], people_reached: 222, adult_females: 195, adult_males: 3, young_females: 24, young_males: 0, children_reached: 0, materials: { cards: 0, slips: 34, posters: 19, flyers: 0 } },
-      { category: 'Below The Line (BTL)', type: 'Outreaches', sessions: 3, districts: ['Kamuli', 'Wakiso'], people_reached: 208, adult_females: 179, adult_males: 8, young_females: 21, young_males: 0, children_reached: 0, materials: { cards: 0, slips: 0, posters: 3, flyers: 0 } },
-      { category: 'Below The Line (BTL)', type: 'Orientation', sessions: 7, districts: ['Kamuli', 'Mukono', 'Wakiso'], people_reached: 160, adult_females: 129, adult_males: 29, young_females: 2, young_males: 0, children_reached: 0, materials: { cards: 8, slips: 16, posters: 21, flyers: 0 } },
-      { category: 'Below The Line (BTL)', type: 'District / Facility Entry Meeting', sessions: 7, districts: ['Kamuli', 'Mukono', 'Wakiso'], people_reached: 34, adult_females: 18, adult_males: 16, young_females: 0, young_males: 0, children_reached: 0, materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
-      { category: 'Below The Line (BTL)', type: 'Immunisation Referral', sessions: 19, districts: distNames, people_reached: 19, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: 0, materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
-      { category: 'Above The Line (ATL)', type: 'Radio Spots, Talkshows & DJ Mentions', sessions: 0, districts: distNames, people_reached: 0, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: 0, notes: 'Regional FM broadcasts across project districts', materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
-      { category: 'Above The Line (ATL)', type: 'Social Media Campaigns & U-Report Prompts', sessions: 0, districts: distNames, people_reached: 0, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: 0, notes: 'Digital influencer engagement & interactive U-Report polls', materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
-      { category: 'Above The Line (ATL)', type: 'Community Audio Towers (Megaphones)', sessions: 0, districts: distNames, people_reached: 0, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: 0, notes: 'Trading centre broadcasts & mobilization', materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } }
-    ];
-  }
-  
+  const activeDistsLower = activeDistricts.map(d => d.toLowerCase());
   let reachList = [];
-  const isAllDistricts = activeDistricts.length === (rawData.district_counts ? Object.keys(rawData.district_counts).length : 4);
   
-  if (isAllDistricts) {
-    reachList = [...rawData.activities_reach_list];
-  } else {
-    const aggregated = {};
-    activeDistricts.forEach(dist => {
-      const distItems = (rawData.activities_reach_by_district && rawData.activities_reach_by_district[dist]) || [];
-      distItems.forEach(item => {
-        if (!aggregated[item.type]) {
-          aggregated[item.type] = {
-            category: item.category,
-            type: item.type,
-            sessions: 0,
-            districts: [],
-            people_reached: 0,
-            adult_females: 0,
-            adult_males: 0,
-            young_females: 0,
-            young_males: 0,
-            children_reached: 0,
-            materials: { cards: 0, slips: 0, posters: 0, flyers: 0 }
-          };
-        }
-        aggregated[item.type].sessions += item.sessions;
-        if (!aggregated[item.type].districts.includes(dist)) {
-          aggregated[item.type].districts.push(dist);
-        }
-        aggregated[item.type].people_reached += item.people_reached;
-        aggregated[item.type].adult_females += item.adult_females;
-        aggregated[item.type].adult_males += item.adult_males;
-        aggregated[item.type].young_females += item.young_females;
-        aggregated[item.type].young_males += item.young_males;
-        aggregated[item.type].children_reached += item.children_reached;
-        if (item.materials) {
-          aggregated[item.type].materials.cards += (item.materials.cards || 0);
-          aggregated[item.type].materials.slips += (item.materials.slips || 0);
-          aggregated[item.type].materials.posters += (item.materials.posters || 0);
-          aggregated[item.type].materials.flyers += (item.materials.flyers || 0);
-        }
-      });
+  let adultFemales = 0;
+  let adultMales = 0;
+  let femalesU18 = 0;
+  let malesU18 = 0;
+  let childrenImmunised = 0;
+  let stakeholdersEngaged = 0;
+  
+  if (rawData.all_activity_records && rawData.all_activity_records.length > 0) {
+    // 1. Filter raw activity records by selected districts AND date range
+    let records = rawData.all_activity_records.filter(item => 
+      item.district === 'All' || activeDistsLower.includes(item.district.toLowerCase())
+    );
+    
+    if (activeStartDate) {
+      records = records.filter(item => !item.date || item.date >= activeStartDate);
+    }
+    if (activeEndDate) {
+      records = records.filter(item => !item.date || item.date <= activeEndDate);
+    }
+    
+    // 2. Aggregate BTL activities from filtered records
+    const btlAgg = {};
+    records.forEach(r => {
+      if (!btlAgg[r.type]) {
+        btlAgg[r.type] = {
+          category: r.category,
+          type: r.type,
+          sessions: 0,
+          districts: [],
+          people_reached: 0,
+          adult_females: 0,
+          adult_males: 0,
+          young_females: 0,
+          young_males: 0,
+          children_reached: 0,
+          materials: { cards: 0, slips: 0, posters: 0, flyers: 0 }
+        };
+      }
+      btlAgg[r.type].sessions += 1;
+      if (r.district && r.district !== 'All' && !btlAgg[r.type].districts.includes(r.district)) {
+        btlAgg[r.type].districts.push(r.district);
+      }
+      btlAgg[r.type].people_reached += (r.people_reached || 0);
+      btlAgg[r.type].adult_females += (r.adult_females || 0);
+      btlAgg[r.type].adult_males += (r.adult_males || 0);
+      btlAgg[r.type].young_females += (r.young_females || 0);
+      btlAgg[r.type].young_males += (r.young_males || 0);
+      btlAgg[r.type].children_reached += (r.children_reached || 0);
+      btlAgg[r.type].materials.cards += (r.cards || 0);
+      btlAgg[r.type].materials.slips += (r.slips || 0);
+      btlAgg[r.type].materials.posters += (r.posters || 0);
+      btlAgg[r.type].materials.flyers += (r.flyers || 0);
+      
+      // Accumulate KPI metrics
+      adultFemales += (r.adult_females || 0);
+      adultMales += (r.adult_males || 0);
+      femalesU18 += (r.young_females || 0);
+      malesU18 += (r.young_males || 0);
+      childrenImmunised += (r.children_immunised || 0);
+      stakeholdersEngaged += (r.stakeholders_engaged || 0);
     });
     
-    const atlItems = rawData.activities_reach_list.filter(x => x.category.includes('ATL'));
-    reachList = [...Object.values(aggregated), ...atlItems];
+    // ATL Channels
+    const atlItems = (rawData.activities_reach_list || []).filter(x => x.category.includes('ATL'));
+    reachList = [...Object.values(btlAgg), ...atlItems];
+  } else {
+    // Fallback when all_activity_records is not yet populated
+    reachList = [...(rawData.activities_reach_list || [])];
+    if (rawData.in_person_summary) {
+      adultFemales = rawData.in_person_summary.adult_females_18 || 936;
+      adultMales = rawData.in_person_summary.adult_males_18 || 316;
+      femalesU18 = rawData.in_person_summary.females_under_18 || 237;
+      malesU18 = rawData.in_person_summary.males_under_18 || 150;
+      childrenImmunised = rawData.in_person_summary.children_immunised || 316;
+      stakeholdersEngaged = rawData.in_person_summary.stakeholders_engaged || 52;
+    }
   }
   
   if (activeActivityCategoryFilter === 'btl') {
@@ -1031,49 +1074,7 @@ function renderActivitiesReachSection() {
     reachList = reachList.filter(item => item.category.includes('ATL'));
   }
   
-  // Calculate In-Person Attendees & Stakeholders Totals
-  let totalAttendees = 0;
-  let adultFemales = 0;
-  let adultMales = 0;
-  let femalesU18 = 0;
-  let malesU18 = 0;
-  let childrenImmunised = 0;
-  let stakeholdersEngaged = 0;
-  
-  if (rawData.in_person_summary) {
-    if (isAllDistricts) {
-      totalAttendees = rawData.in_person_summary.total_attendees || 1639;
-      adultFemales = rawData.in_person_summary.adult_females_18 || 936;
-      adultMales = rawData.in_person_summary.adult_males_18 || 316;
-      femalesU18 = rawData.in_person_summary.females_under_18 || 237;
-      malesU18 = rawData.in_person_summary.males_under_18 || 150;
-      childrenImmunised = rawData.in_person_summary.children_immunised || 316;
-      stakeholdersEngaged = rawData.in_person_summary.stakeholders_engaged || 52;
-    } else {
-      const byDist = rawData.in_person_summary.by_district || {};
-      activeDistricts.forEach(d => {
-        if (byDist[d]) {
-          totalAttendees += (byDist[d].total_attendees || 0);
-          adultFemales += (byDist[d].adult_females_18 || 0);
-          adultMales += (byDist[d].adult_males_18 || 0);
-          femalesU18 += (byDist[d].females_under_18 || 0);
-          malesU18 += (byDist[d].males_under_18 || 0);
-          childrenImmunised += (byDist[d].children_immunised || 0);
-          stakeholdersEngaged += (byDist[d].stakeholders_engaged || 0);
-        }
-      });
-    }
-  } else {
-    reachList.forEach(item => {
-      adultFemales += (item.adult_females || 0);
-      adultMales += (item.adult_males || 0);
-      femalesU18 += (item.young_females || 0);
-      malesU18 += (item.young_males || 0);
-    });
-    totalAttendees = adultFemales + adultMales + femalesU18 + malesU18;
-    childrenImmunised = 316;
-    stakeholdersEngaged = 52;
-  }
+  const totalAttendees = adultFemales + adultMales + femalesU18 + malesU18;
   
   const elAtt = document.getElementById('act-reach-total-attendees');
   const elFem18 = document.getElementById('act-reach-adult-females');
