@@ -37112,9 +37112,9 @@
     }
   ],
   "followup_summary": {
-    "total_followups": 840,
+    "total_followups": 925,
     "baseline_status": {
-      "Under dose": 612,
+      "Under dose": 697,
       "Zero dose": 92,
       "Female": 82,
       "Complete": 36,
@@ -37125,14 +37125,14 @@
       "underdose": 1
     },
     "current_status": {
-      "Fully Immunized / Caught Up": 554,
-      "Under dose": 248,
+      "Fully Immunized / Caught Up": 634,
+      "Under dose": 253,
       "Restarted": 17,
       "Zero dose": 15,
       "Fully Immunized ": 6
     },
     "by_district": {
-      "Kamuli": 486,
+      "Kamuli": 571,
       "Kampala": 275,
       "Mukono": 56,
       "Wakiso": 12,
@@ -37151,8 +37151,8 @@
       "Under dose": 1
     },
     "Kamuli": {
-      "Fully Immunized / Caught Up": 370,
-      "Under dose": 110,
+      "Fully Immunized / Caught Up": 450,
+      "Under dose": 115,
       "Zero dose": 6
     },
     "MUKONO": {
@@ -48126,12 +48126,1062 @@
       "card_available": "Yes",
       "date": "2026-08-12",
       "challenges": []
+    },
+    {
+      "index": 1043,
+      "name": "Namulondo Falida",
+      "age": 36,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1044,
+      "name": "Maswagila umar",
+      "age": 35,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1045,
+      "name": "Mwase David",
+      "age": 40,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Under dose",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1046,
+      "name": "Nambi olivia",
+      "age": 41,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": [
+        "Distance",
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1047,
+      "name": "Mugabe Godfrey",
+      "age": 50,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": [
+        "Distance",
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1048,
+      "name": "Nakisuyi shamida",
+      "age": 34,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": []
+    },
+    {
+      "index": 1049,
+      "name": "Namugwano florence",
+      "age": 30,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": []
+    },
+    {
+      "index": 1050,
+      "name": "Isabirye James",
+      "age": 26,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": []
+    },
+    {
+      "index": 1051,
+      "name": "Nakaima Rose",
+      "age": 30,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": [
+        "Distance",
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1052,
+      "name": "Ngobi isaac",
+      "age": 35,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": [
+        "Distance",
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1053,
+      "name": "Musoga sawuya",
+      "age": 34,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": []
+    },
+    {
+      "index": 1054,
+      "name": "Ngobi medi",
+      "age": 24,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": []
+    },
+    {
+      "index": 1055,
+      "name": "Kayongo tom",
+      "age": 50,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": [
+        "Distance",
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1056,
+      "name": "Nakato Deborah",
+      "age": 41,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": [
+        "Distance",
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1057,
+      "name": "Kisakye brenda",
+      "age": 40,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": []
+    },
+    {
+      "index": 1058,
+      "name": "Kifuko Aziza",
+      "age": 43,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-11",
+      "challenges": []
+    },
+    {
+      "index": 1059,
+      "name": "Nabirye fatuma",
+      "age": 20,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1060,
+      "name": "Tibenda Hamida",
+      "age": 21,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Waiting Time"
+      ]
+    },
+    {
+      "index": 1061,
+      "name": "Ntono suzan",
+      "age": 25,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1062,
+      "name": "Mubezi Viola",
+      "age": 21,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1063,
+      "name": "Mbasaire Jane",
+      "age": 27,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1064,
+      "name": "Babiwemba Norah",
+      "age": 20,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1065,
+      "name": "Nanagwe Tabisa",
+      "age": 26,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1066,
+      "name": "Kyokolera Mercy",
+      "age": 35,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": [
+        "Distance",
+        "Transport Cost",
+        "Other"
+      ]
+    },
+    {
+      "index": 1067,
+      "name": "Namukaya mercy",
+      "age": 38,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1068,
+      "name": "Nakayima Shafiat",
+      "age": 25,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1069,
+      "name": "Naigaga Hadija",
+      "age": 28,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1070,
+      "name": "Kwagala Kasifa",
+      "age": 25,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1071,
+      "name": "Kwikiliza monica",
+      "age": 23,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1072,
+      "name": "Mbeiza christine",
+      "age": 28,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1073,
+      "name": "Bato Juma",
+      "age": 28,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1074,
+      "name": "Mugude antony",
+      "age": 27,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1075,
+      "name": "Mukyala scovia",
+      "age": 30,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1076,
+      "name": "Nangobi Janet",
+      "age": 27,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-12",
+      "challenges": []
+    },
+    {
+      "index": 1077,
+      "name": "Wambuga tanansi",
+      "age": 34,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1078,
+      "name": "Mukisa john",
+      "age": 32,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1079,
+      "name": "Separate George",
+      "age": 35,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Distance",
+        "Work Schedule",
+        "Farming Season"
+      ]
+    },
+    {
+      "index": 1080,
+      "name": "Mugude Allan",
+      "age": 32,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Distance",
+        "Farming Season"
+      ]
+    },
+    {
+      "index": 1081,
+      "name": "Kaudha faith",
+      "age": 35,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Distance",
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1082,
+      "name": "Isabirye fred",
+      "age": 30,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Distance",
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1083,
+      "name": "Mataga Paul",
+      "age": 29,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1084,
+      "name": "Asabawebwa nataliya",
+      "age": 35,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1085,
+      "name": "Kuliti john",
+      "age": 36,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Farming Season"
+      ]
+    },
+    {
+      "index": 1086,
+      "name": "Kawaiso Asuma",
+      "age": 37,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Distance",
+        "Transport Cost",
+        "Other"
+      ]
+    },
+    {
+      "index": 1087,
+      "name": "Babirye prossy",
+      "age": 46,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1088,
+      "name": "Naigaga shanita",
+      "age": 20,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1089,
+      "name": "Nabirye judith",
+      "age": 25,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1090,
+      "name": "Ayanga shakira",
+      "age": 25,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1091,
+      "name": "Nabirye florence",
+      "age": 38,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1092,
+      "name": "Eseza mugude",
+      "age": 43,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1093,
+      "name": "Nandhego phiona",
+      "age": 23,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1094,
+      "name": "Nakazivwe rebecca",
+      "age": 32,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1095,
+      "name": "Nalumansi hajila",
+      "age": 31,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1096,
+      "name": "Kwagala sofia",
+      "age": 22,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1097,
+      "name": "Mirembe sylivia",
+      "age": 27,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1098,
+      "name": "Nakaibale Rachel",
+      "age": 21,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1099,
+      "name": "Nabirye veronica",
+      "age": 24,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1100,
+      "name": "Nabulime suzan",
+      "age": 30,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1101,
+      "name": "Kasuswa Jack",
+      "age": 27,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1102,
+      "name": "Kalivamuki Zalika",
+      "age": 28,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1103,
+      "name": "Bakwembe Immaculate",
+      "age": 27,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1104,
+      "name": "Kagoya Zaina",
+      "age": 29,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1105,
+      "name": "Wankolowo kasimu",
+      "age": 35,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-13",
+      "challenges": []
+    },
+    {
+      "index": 1106,
+      "name": "Namukaya Annet",
+      "age": 39,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1107,
+      "name": "Nakato fauza",
+      "age": 25,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1108,
+      "name": "Nabirye mariam",
+      "age": 48,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance",
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1109,
+      "name": "Mbwali florence",
+      "age": 28,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1110,
+      "name": "Namaganda florence",
+      "age": 38,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1111,
+      "name": "Nakainza rachel",
+      "age": 37,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1112,
+      "name": "Musenze moses",
+      "age": 53,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1113,
+      "name": "Nakaibale winy",
+      "age": 24,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1114,
+      "name": "Namuganza monica",
+      "age": 48,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1115,
+      "name": "Wotali viola",
+      "age": 25,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Transport Cost"
+      ]
+    },
+    {
+      "index": 1116,
+      "name": "Waiswa David",
+      "age": 36,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1117,
+      "name": "Nakamadu aisha",
+      "age": 49,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Under dose",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1118,
+      "name": "Babirye hillary",
+      "age": 23,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance",
+        "Transport Cost",
+        "Other"
+      ]
+    },
+    {
+      "index": 1119,
+      "name": "Namukose harriet",
+      "age": 23,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1120,
+      "name": "Wokali amina",
+      "age": 50,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": []
+    },
+    {
+      "index": 1121,
+      "name": "Kutesa lydia",
+      "age": 30,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance"
+      ]
+    },
+    {
+      "index": 1122,
+      "name": "Namubiru monica",
+      "age": 52,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Waiting Time"
+      ]
+    },
+    {
+      "index": 1123,
+      "name": "Mukyala christine",
+      "age": 26,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance",
+        "Farming Season"
+      ]
+    },
+    {
+      "index": 1124,
+      "name": "Bitali phiona",
+      "age": 26,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Under dose",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": []
+    },
+    {
+      "index": 1125,
+      "name": "Nakisuyi bridget",
+      "age": 26,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Under dose",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance",
+        "Waiting Time"
+      ]
+    },
+    {
+      "index": 1126,
+      "name": "Kabalae juma",
+      "age": 20,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Under dose",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Waiting Time"
+      ]
+    },
+    {
+      "index": 1127,
+      "name": "Nakato zaina",
+      "age": 38,
+      "district": "Kamuli",
+      "baseline_status": "Under dose",
+      "current_status": "Fully Immunized / Caught Up",
+      "card_available": "Yes",
+      "date": "2026-08-14",
+      "challenges": [
+        "Distance",
+        "Waiting Time"
+      ]
     }
   ],
   "card_transition": {
-    "no_to_yes": 126,
+    "no_to_yes": 127,
     "no_to_no": 12,
-    "yes_to_yes": 548,
+    "yes_to_yes": 594,
     "yes_to_no": 2
   },
   "milestones_summary": {
