@@ -460,8 +460,6 @@
       <section class="tab-view" id="tab-activities">
         <div class="activity-tracker-layout">
           
-
-          
           <!-- Campaign Targets vs Actual Results -->
           <div class="widget-card">
             <div class="widget-header">
@@ -476,7 +474,70 @@
             </div>
           </div>
           
+          <!-- Activities Conducted & People Reached (BTL & ATL) -->
+          <div class="widget-card" style="margin-top: 1.5rem;">
+            <div class="widget-header" style="flex-wrap: wrap; gap: 1rem;">
+              <div class="widget-title">
+                <h3><i class="fas fa-people-group"></i> Activities Conducted & People Reached</h3>
+                <p>Tracking Below the Line (BTL) community interventions & Above the Line (ATL) mass media reach</p>
+              </div>
+              <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                <button class="filter-select" id="btn-act-all" onclick="setActivityCategoryFilter('all')" style="padding: 0.35rem 0.75rem; border-radius: 6px; font-weight: 600; cursor:pointer;">All Activities</button>
+                <button class="filter-select" id="btn-act-btl" onclick="setActivityCategoryFilter('btl')" style="padding: 0.35rem 0.75rem; border-radius: 6px; cursor:pointer;">Below The Line (BTL)</button>
+                <button class="filter-select" id="btn-act-atl" onclick="setActivityCategoryFilter('atl')" style="padding: 0.35rem 0.75rem; border-radius: 6px; cursor:pointer;">Above The Line (ATL)</button>
+              </div>
+            </div>
 
+            <!-- Activity Reach Quick Stats -->
+            <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 1.5rem;">
+              <div class="stat-card" style="padding: 1.25rem;">
+                <div class="stat-icon" style="background: rgba(45, 212, 191, 0.1); color: var(--color-success);"><i class="fas fa-calendar-check"></i></div>
+                <div class="stat-details">
+                  <span class="stat-label">Total Sessions / Visits</span>
+                  <span class="stat-value" id="act-reach-total-sessions">0</span>
+                </div>
+              </div>
+              <div class="stat-card" style="padding: 1.25rem;">
+                <div class="stat-icon" style="background: rgba(129, 140, 248, 0.1); color: var(--accent-primary);"><i class="fas fa-users"></i></div>
+                <div class="stat-details">
+                  <span class="stat-label">Direct People Reached</span>
+                  <span class="stat-value" id="act-reach-total-people">0</span>
+                </div>
+              </div>
+              <div class="stat-card" style="padding: 1.25rem;">
+                <div class="stat-icon" style="background: rgba(251, 191, 36, 0.1); color: var(--color-warning);"><i class="fas fa-venus-mars"></i></div>
+                <div class="stat-details">
+                  <span class="stat-label">Females Reached</span>
+                  <span class="stat-value" id="act-reach-total-females">0</span>
+                </div>
+              </div>
+              <div class="stat-card" style="padding: 1.25rem;">
+                <div class="stat-icon" style="background: rgba(96, 165, 250, 0.1); color: var(--color-info);"><i class="fas fa-baby"></i></div>
+                <div class="stat-details">
+                  <span class="stat-label">Children in Households</span>
+                  <span class="stat-value" id="act-reach-total-children">0</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="table-responsive">
+              <table class="custom-table" id="activities-reach-table">
+                <thead>
+                  <tr>
+                    <th style="width: 16%">Category</th>
+                    <th style="width: 26%">Activity / Intervention</th>
+                    <th style="width: 10%">Sessions</th>
+                    <th style="width: 16%">People Reached</th>
+                    <th style="width: 20%">Demographic Breakdown</th>
+                    <th style="width: 12%">Materials / Tools</th>
+                  </tr>
+                </thead>
+                <tbody id="activities-reach-table-body">
+                  <!-- Rendered dynamically in app.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
           
         </div>
       </section>

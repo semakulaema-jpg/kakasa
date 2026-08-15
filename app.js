@@ -897,10 +897,26 @@ function nextMythsPage() {
   }
 }
 
+let activeActivityCategoryFilter = 'all';
+
+function setActivityCategoryFilter(category) {
+  activeActivityCategoryFilter = category;
+  
+  const btnAll = document.getElementById('btn-act-all');
+  const btnBtl = document.getElementById('btn-act-btl');
+  const btnAtl = document.getElementById('btn-act-atl');
+  
+  if (btnAll) btnAll.style.background = category === 'all' ? 'var(--accent-primary)' : 'var(--bg-secondary)';
+  if (btnBtl) btnBtl.style.background = category === 'btl' ? 'var(--accent-primary)' : 'var(--bg-secondary)';
+  if (btnAtl) btnAtl.style.background = category === 'atl' ? 'var(--accent-primary)' : 'var(--bg-secondary)';
+  
+  renderActivitiesReachSection();
+}
+
 // Render Activities & Risks tab content
 function renderActivitiesTab() {
-  // Render Target vs Actual Results comparison
   renderTargetsComparison();
+  renderActivitiesReachSection();
 }
 
 function renderTargetsComparison() {
@@ -934,6 +950,150 @@ function renderTargetsComparison() {
       </div>
     `;
     container.appendChild(div);
+  });
+}
+
+function renderActivitiesReachSection() {
+  if (!rawData || !rawData.activities_reach_list) return;
+  
+  let reachList = [];
+  const isAllDistricts = activeDistricts.length === (rawData.district_counts ? Object.keys(rawData.district_counts).length : 4);
+  
+  if (isAllDistricts) {
+    reachList = [...rawData.activities_reach_list];
+  } else {
+    const aggregated = {};
+    activeDistricts.forEach(dist => {
+      const distItems = (rawData.activities_reach_by_district && rawData.activities_reach_by_district[dist]) || [];
+      distItems.forEach(item => {
+        if (!aggregated[item.type]) {
+          aggregated[item.type] = {
+            category: item.category,
+            type: item.type,
+            sessions: 0,
+            districts: [],
+            people_reached: 0,
+            adult_females: 0,
+            adult_males: 0,
+            young_females: 0,
+            young_males: 0,
+            children_reached: 0,
+            materials: { cards: 0, slips: 0, posters: 0, flyers: 0 }
+          };
+        }
+        aggregated[item.type].sessions += item.sessions;
+        if (!aggregated[item.type].districts.includes(dist)) {
+          aggregated[item.type].districts.push(dist);
+        }
+        aggregated[item.type].people_reached += item.people_reached;
+        aggregated[item.type].adult_females += item.adult_females;
+        aggregated[item.type].adult_males += item.adult_males;
+        aggregated[item.type].young_females += item.young_females;
+        aggregated[item.type].young_males += item.young_males;
+        aggregated[item.type].children_reached += item.children_reached;
+        if (item.materials) {
+          aggregated[item.type].materials.cards += (item.materials.cards || 0);
+          aggregated[item.type].materials.slips += (item.materials.slips || 0);
+          aggregated[item.type].materials.posters += (item.materials.posters || 0);
+          aggregated[item.type].materials.flyers += (item.materials.flyers || 0);
+        }
+      });
+    });
+    
+    const atlItems = rawData.activities_reach_list.filter(x => x.category.includes('ATL'));
+    reachList = [...Object.values(aggregated), ...atlItems];
+  }
+  
+  if (activeActivityCategoryFilter === 'btl') {
+    reachList = reachList.filter(item => item.category.includes('BTL'));
+  } else if (activeActivityCategoryFilter === 'atl') {
+    reachList = reachList.filter(item => item.category.includes('ATL'));
+  }
+  
+  let totalSessions = 0;
+  let totalPeople = 0;
+  let totalFemales = 0;
+  let totalChildren = 0;
+  
+  reachList.forEach(item => {
+    totalSessions += (item.sessions || 0);
+    totalPeople += (item.people_reached || 0);
+    totalFemales += ((item.adult_females || 0) + (item.young_females || 0));
+    totalChildren += (item.children_reached || 0);
+  });
+  
+  const sessEl = document.getElementById('act-reach-total-sessions');
+  const peopleEl = document.getElementById('act-reach-total-people');
+  const femEl = document.getElementById('act-reach-total-females');
+  const childEl = document.getElementById('act-reach-total-children');
+  
+  if (sessEl) sessEl.textContent = totalSessions.toLocaleString();
+  if (peopleEl) peopleEl.textContent = totalPeople.toLocaleString();
+  if (femEl) femEl.textContent = totalFemales > 0 ? totalFemales.toLocaleString() : (activeActivityCategoryFilter === 'btl' ? totalPeople.toLocaleString() : "0");
+  if (childEl) childEl.textContent = totalChildren.toLocaleString();
+  
+  const tbody = document.getElementById('activities-reach-table-body');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  
+  if (reachList.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="6" style="text-align:center; padding:30px; color:var(--color-text-dim);">
+          <p>No activity records found matching filters.</p>
+        </td>
+      </tr>
+    `;
+    return;
+  }
+  
+  reachList.forEach(item => {
+    const isBtl = item.category.includes('BTL');
+    const badgeClass = isBtl ? 'badge-success' : 'badge-info';
+    
+    let demoStr = '';
+    if (isBtl) {
+      if (item.type === 'Household Visits' || item.type === 'Baseline Data Collection') {
+        demoStr = `<span><strong>${item.people_reached.toLocaleString()}</strong> Caregivers</span><br><span style="font-size:0.75rem; color:var(--color-text-muted)">${item.children_reached.toLocaleString()} children in HH</span>`;
+      } else if (item.type === 'Immunisation Referral') {
+        demoStr = `<span><strong>${item.sessions.toLocaleString()}</strong> Facility Referrals</span>`;
+      } else {
+        const fCount = (item.adult_females || 0) + (item.young_females || 0);
+        const mCount = (item.adult_males || 0) + (item.young_males || 0);
+        demoStr = `<span><strong>${fCount}</strong> Females, <strong>${mCount}</strong> Males</span>`;
+      }
+    } else {
+      demoStr = `<span style="font-size:0.8rem; color:var(--color-text-muted)">${item.notes || 'Mass population broadcast'}</span>`;
+    }
+    
+    let matStr = '-';
+    if (item.materials) {
+      const matArr = [];
+      if (item.materials.slips) matArr.push(`<strong>${item.materials.slips}</strong> Slips`);
+      if (item.materials.posters) matArr.push(`<strong>${item.materials.posters}</strong> Posters`);
+      if (item.materials.cards) matArr.push(`<strong>${item.materials.cards}</strong> Cards`);
+      if (item.materials.flyers) matArr.push(`<strong>${item.materials.flyers}</strong> Flyers`);
+      if (item.materials.spots_aired) matArr.push(`<strong>${item.materials.spots_aired}</strong> Broadcasts`);
+      if (matArr.length > 0) matStr = matArr.join('<br>');
+    }
+    
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><span class="badge ${badgeClass}">${isBtl ? 'BTL Community' : 'ATL Media'}</span></td>
+      <td>
+        <strong style="color:var(--color-text-main);">${item.type}</strong>
+        ${item.districts && item.districts.length > 0 ? `<br><span style="font-size:0.75rem; color:var(--color-text-muted)"><i class="fas fa-map-marker-alt" style="font-size:0.7rem;"></i> ${item.districts.join(', ')}</span>` : ''}
+      </td>
+      <td><strong>${item.sessions ? item.sessions.toLocaleString() : 'Active'}</strong></td>
+      <td>
+        <span style="font-weight:700; font-size:1rem; color:${item.people_reached > 0 ? 'var(--color-success)' : 'var(--color-text-dim)'};">
+          ${item.people_reached > 0 ? item.people_reached.toLocaleString() : (isBtl ? '0' : 'In Progress')}
+        </span>
+      </td>
+      <td>${demoStr}</td>
+      <td style="font-size:0.8rem;">${matStr}</td>
+    `;
+    tbody.appendChild(tr);
   });
 }
 

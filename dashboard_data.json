@@ -39598,6 +39598,660 @@
     "Outreaches": 3,
     "Community Activations": 2
   },
+  "activities_reach_list": [
+    {
+      "category": "Below The Line (BTL)",
+      "type": "Baseline Data Collection",
+      "sessions": 231,
+      "districts": [
+        "Kampala",
+        "Kamuli"
+      ],
+      "people_reached": 231,
+      "adult_females": 0,
+      "adult_males": 0,
+      "young_females": 0,
+      "young_males": 0,
+      "children_reached": 400,
+      "materials": {
+        "cards": 0,
+        "slips": 0,
+        "posters": 0,
+        "flyers": 0
+      }
+    },
+    {
+      "category": "Below The Line (BTL)",
+      "type": "Bead Session",
+      "sessions": 5,
+      "districts": [
+        "Kamuli",
+        "Mukono",
+        "Wakiso"
+      ],
+      "people_reached": 222,
+      "adult_females": 195,
+      "adult_males": 3,
+      "young_females": 24,
+      "young_males": 0,
+      "children_reached": 0,
+      "materials": {
+        "cards": 0,
+        "slips": 34,
+        "posters": 19,
+        "flyers": 0
+      }
+    },
+    {
+      "category": "Below The Line (BTL)",
+      "type": "Community Activations",
+      "sessions": 2,
+      "districts": [
+        "Kamuli"
+      ],
+      "people_reached": 1015,
+      "adult_females": 415,
+      "adult_males": 260,
+      "young_females": 190,
+      "young_males": 150,
+      "children_reached": 0,
+      "materials": {
+        "cards": 0,
+        "slips": 0,
+        "posters": 0,
+        "flyers": 0
+      }
+    },
+    {
+      "category": "Below The Line (BTL)",
+      "type": "District / Facility Entry Meeting",
+      "sessions": 7,
+      "districts": [
+        "Kampala",
+        "Kamuli",
+        "Mukono",
+        "Wakiso"
+      ],
+      "people_reached": 34,
+      "adult_females": 18,
+      "adult_males": 16,
+      "young_females": 0,
+      "young_males": 0,
+      "children_reached": 0,
+      "materials": {
+        "cards": 0,
+        "slips": 72,
+        "posters": 30,
+        "flyers": 0
+      }
+    },
+    {
+      "category": "Below The Line (BTL)",
+      "type": "Household Visits",
+      "sessions": 4100,
+      "districts": [
+        "Kampala",
+        "Kamuli",
+        "Mukono",
+        "Wakiso"
+      ],
+      "people_reached": 4100,
+      "adult_females": 0,
+      "adult_males": 0,
+      "young_females": 0,
+      "young_males": 0,
+      "children_reached": 10687,
+      "materials": {
+        "cards": 8,
+        "slips": 16,
+        "posters": 21,
+        "flyers": 8
+      }
+    },
+    {
+      "category": "Below The Line (BTL)",
+      "type": "Immunisation Referral",
+      "sessions": 19,
+      "districts": [
+        "Kamuli",
+        "Mukono"
+      ],
+      "people_reached": 19,
+      "adult_females": 0,
+      "adult_males": 0,
+      "young_females": 0,
+      "young_males": 0,
+      "children_reached": 0,
+      "materials": {
+        "cards": 0,
+        "slips": 0,
+        "posters": 0,
+        "flyers": 0
+      }
+    },
+    {
+      "category": "Below The Line (BTL)",
+      "type": "Orientation",
+      "sessions": 7,
+      "districts": [
+        "Kampala",
+        "Kamuli",
+        "Mukono",
+        "Wakiso"
+      ],
+      "people_reached": 160,
+      "adult_females": 129,
+      "adult_males": 29,
+      "young_females": 2,
+      "young_males": 0,
+      "children_reached": 0,
+      "materials": {
+        "cards": 0,
+        "slips": 0,
+        "posters": 0,
+        "flyers": 0
+      }
+    },
+    {
+      "category": "Below The Line (BTL)",
+      "type": "Outreaches",
+      "sessions": 3,
+      "districts": [
+        "Kamuli",
+        "Mukono"
+      ],
+      "people_reached": 208,
+      "adult_females": 179,
+      "adult_males": 8,
+      "young_females": 21,
+      "young_males": 0,
+      "children_reached": 0,
+      "materials": {
+        "cards": 0,
+        "slips": 0,
+        "posters": 3,
+        "flyers": 0
+      }
+    },
+    {
+      "category": "Above The Line (ATL)",
+      "type": "Radio Spots, Talkshows & DJ Mentions",
+      "sessions": 0,
+      "districts": [
+        "Kamuli",
+        "Kampala",
+        "Mukono",
+        "Wakiso"
+      ],
+      "people_reached": 0,
+      "adult_females": 0,
+      "adult_males": 0,
+      "young_females": 0,
+      "young_males": 0,
+      "children_reached": 0,
+      "notes": "Top regional FM broadcasts in Kamuli, Mukono, Kampala & Wakiso",
+      "materials": {
+        "cards": 0,
+        "slips": 0,
+        "posters": 0,
+        "flyers": 0
+      }
+    },
+    {
+      "category": "Above The Line (ATL)",
+      "type": "Social Media Campaigns & U-Report Prompts",
+      "sessions": 0,
+      "districts": [
+        "Kamuli",
+        "Kampala",
+        "Mukono",
+        "Wakiso"
+      ],
+      "people_reached": 0,
+      "adult_females": 0,
+      "adult_males": 0,
+      "young_females": 0,
+      "young_males": 0,
+      "children_reached": 0,
+      "notes": "Digital influencer engagement, reels & carousel toolkits",
+      "materials": {
+        "cards": 0,
+        "slips": 0,
+        "posters": 0,
+        "flyers": 0
+      }
+    },
+    {
+      "category": "Above The Line (ATL)",
+      "type": "Community Audio Towers (Megaphones)",
+      "sessions": 0,
+      "districts": [
+        "Kamuli",
+        "Kampala",
+        "Mukono",
+        "Wakiso"
+      ],
+      "people_reached": 0,
+      "adult_females": 0,
+      "adult_males": 0,
+      "young_females": 0,
+      "young_males": 0,
+      "children_reached": 0,
+      "notes": "Trading centre public address broadcasts and reminders",
+      "materials": {
+        "cards": 0,
+        "slips": 0,
+        "posters": 0,
+        "flyers": 0
+      }
+    }
+  ],
+  "activities_reach_by_district": {
+    "Kampala": [
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Baseline Data Collection",
+        "sessions": 154,
+        "district": "Kampala",
+        "people_reached": 154,
+        "adult_females": 0,
+        "adult_males": 0,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 279,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "District / Facility Entry Meeting",
+        "sessions": 3,
+        "district": "Kampala",
+        "people_reached": 23,
+        "adult_females": 15,
+        "adult_males": 8,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 72,
+          "posters": 30,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Household Visits",
+        "sessions": 885,
+        "district": "Kampala",
+        "people_reached": 885,
+        "adult_females": 0,
+        "adult_males": 0,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 2010,
+        "materials": {
+          "cards": 0,
+          "slips": 8,
+          "posters": 8,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Orientation",
+        "sessions": 2,
+        "district": "Kampala",
+        "people_reached": 24,
+        "adult_females": 17,
+        "adult_males": 7,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      }
+    ],
+    "Kamuli": [
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Baseline Data Collection",
+        "sessions": 77,
+        "district": "Kamuli",
+        "people_reached": 77,
+        "adult_females": 0,
+        "adult_males": 0,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 121,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Bead Session",
+        "sessions": 2,
+        "district": "Kamuli",
+        "people_reached": 97,
+        "adult_females": 90,
+        "adult_males": 2,
+        "young_females": 5,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 6,
+          "posters": 5,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Community Activations",
+        "sessions": 2,
+        "district": "Kamuli",
+        "people_reached": 1015,
+        "adult_females": 415,
+        "adult_males": 260,
+        "young_females": 190,
+        "young_males": 150,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "District / Facility Entry Meeting",
+        "sessions": 2,
+        "district": "Kamuli",
+        "people_reached": 7,
+        "adult_females": 2,
+        "adult_males": 5,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Household Visits",
+        "sessions": 988,
+        "district": "Kamuli",
+        "people_reached": 988,
+        "adult_females": 0,
+        "adult_males": 0,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 2696,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Immunisation Referral",
+        "sessions": 18,
+        "district": "Kamuli",
+        "people_reached": 18,
+        "adult_females": 0,
+        "adult_males": 0,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Orientation",
+        "sessions": 2,
+        "district": "Kamuli",
+        "people_reached": 103,
+        "adult_females": 88,
+        "adult_males": 13,
+        "young_females": 2,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Outreaches",
+        "sessions": 2,
+        "district": "Kamuli",
+        "people_reached": 183,
+        "adult_females": 155,
+        "adult_males": 7,
+        "young_females": 21,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 2,
+          "flyers": 0
+        }
+      }
+    ],
+    "Mukono": [
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Bead Session",
+        "sessions": 1,
+        "district": "Mukono",
+        "people_reached": 33,
+        "adult_females": 31,
+        "adult_males": 0,
+        "young_females": 2,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 3,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "District / Facility Entry Meeting",
+        "sessions": 1,
+        "district": "Mukono",
+        "people_reached": 2,
+        "adult_females": 0,
+        "adult_males": 2,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Household Visits",
+        "sessions": 844,
+        "district": "Mukono",
+        "people_reached": 844,
+        "adult_females": 0,
+        "adult_males": 0,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 3048,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 2,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Immunisation Referral",
+        "sessions": 1,
+        "district": "Mukono",
+        "people_reached": 1,
+        "adult_females": 0,
+        "adult_males": 0,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Orientation",
+        "sessions": 1,
+        "district": "Mukono",
+        "people_reached": 13,
+        "adult_females": 8,
+        "adult_males": 5,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Outreaches",
+        "sessions": 1,
+        "district": "Mukono",
+        "people_reached": 25,
+        "adult_females": 24,
+        "adult_males": 1,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 1,
+          "flyers": 0
+        }
+      }
+    ],
+    "Wakiso": [
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Bead Session",
+        "sessions": 2,
+        "district": "Wakiso",
+        "people_reached": 92,
+        "adult_females": 74,
+        "adult_males": 1,
+        "young_females": 17,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 28,
+          "posters": 11,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "District / Facility Entry Meeting",
+        "sessions": 1,
+        "district": "Wakiso",
+        "people_reached": 2,
+        "adult_females": 1,
+        "adult_males": 1,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Household Visits",
+        "sessions": 1383,
+        "district": "Wakiso",
+        "people_reached": 1383,
+        "adult_females": 0,
+        "adult_males": 0,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 2933,
+        "materials": {
+          "cards": 8,
+          "slips": 8,
+          "posters": 11,
+          "flyers": 8
+        }
+      },
+      {
+        "category": "Below The Line (BTL)",
+        "type": "Orientation",
+        "sessions": 2,
+        "district": "Wakiso",
+        "people_reached": 20,
+        "adult_females": 16,
+        "adult_males": 4,
+        "young_females": 0,
+        "young_males": 0,
+        "children_reached": 0,
+        "materials": {
+          "cards": 0,
+          "slips": 0,
+          "posters": 0,
+          "flyers": 0
+        }
+      }
+    ]
+  },
   "activities": [
     {
       "id": 1,
