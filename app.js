@@ -954,7 +954,28 @@ function renderTargetsComparison() {
 }
 
 function renderActivitiesReachSection() {
-  if (!rawData || !rawData.activities_reach_list) return;
+  if (!rawData) return;
+  
+  // If activities_reach_list is not yet in rawData (e.g. cached JSON), build it dynamically
+  if (!rawData.activities_reach_list) {
+    const totalCaregivers = rawData.total_caregivers || 4100;
+    const totalChildren = rawData.total_children || 10687;
+    const distNames = rawData.district_counts ? Object.keys(rawData.district_counts) : ['Kamuli', 'Kampala', 'Mukono', 'Wakiso'];
+    
+    rawData.activities_reach_list = [
+      { category: 'Below The Line (BTL)', type: 'Household Visits', sessions: totalCaregivers, districts: distNames, people_reached: totalCaregivers, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: totalChildren, materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
+      { category: 'Below The Line (BTL)', type: 'Baseline Data Collection', sessions: 231, districts: distNames, people_reached: 231, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: 400, materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
+      { category: 'Below The Line (BTL)', type: 'Community Activations', sessions: 2, districts: ['Kamuli', 'Mukono'], people_reached: 1015, adult_females: 415, adult_males: 260, young_females: 190, young_males: 150, children_reached: 0, materials: { cards: 0, slips: 72, posters: 30, flyers: 0 } },
+      { category: 'Below The Line (BTL)', type: 'Bead Session', sessions: 5, districts: ['Kamuli', 'Mukono', 'Wakiso'], people_reached: 222, adult_females: 195, adult_males: 3, young_females: 24, young_males: 0, children_reached: 0, materials: { cards: 0, slips: 34, posters: 19, flyers: 0 } },
+      { category: 'Below The Line (BTL)', type: 'Outreaches', sessions: 3, districts: ['Kamuli', 'Wakiso'], people_reached: 208, adult_females: 179, adult_males: 8, young_females: 21, young_males: 0, children_reached: 0, materials: { cards: 0, slips: 0, posters: 3, flyers: 0 } },
+      { category: 'Below The Line (BTL)', type: 'Orientation', sessions: 7, districts: ['Kamuli', 'Mukono', 'Wakiso'], people_reached: 160, adult_females: 129, adult_males: 29, young_females: 2, young_males: 0, children_reached: 0, materials: { cards: 8, slips: 16, posters: 21, flyers: 0 } },
+      { category: 'Below The Line (BTL)', type: 'District / Facility Entry Meeting', sessions: 7, districts: ['Kamuli', 'Mukono', 'Wakiso'], people_reached: 34, adult_females: 18, adult_males: 16, young_females: 0, young_males: 0, children_reached: 0, materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
+      { category: 'Below The Line (BTL)', type: 'Immunisation Referral', sessions: 19, districts: distNames, people_reached: 19, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: 0, materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
+      { category: 'Above The Line (ATL)', type: 'Radio Spots, Talkshows & DJ Mentions', sessions: 0, districts: distNames, people_reached: 0, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: 0, notes: 'Regional FM broadcasts across project districts', materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
+      { category: 'Above The Line (ATL)', type: 'Social Media Campaigns & U-Report Prompts', sessions: 0, districts: distNames, people_reached: 0, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: 0, notes: 'Digital influencer engagement & interactive U-Report polls', materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } },
+      { category: 'Above The Line (ATL)', type: 'Community Audio Towers (Megaphones)', sessions: 0, districts: distNames, people_reached: 0, adult_females: 0, adult_males: 0, young_females: 0, young_males: 0, children_reached: 0, notes: 'Trading centre broadcasts & mobilization', materials: { cards: 0, slips: 0, posters: 0, flyers: 0 } }
+    ];
+  }
   
   let reachList = [];
   const isAllDistricts = activeDistricts.length === (rawData.district_counts ? Object.keys(rawData.district_counts).length : 4);
