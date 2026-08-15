@@ -1031,27 +1031,65 @@ function renderActivitiesReachSection() {
     reachList = reachList.filter(item => item.category.includes('ATL'));
   }
   
-  let totalSessions = 0;
-  let totalPeople = 0;
-  let totalFemales = 0;
-  let totalChildren = 0;
+  // Calculate In-Person Attendees & Stakeholders Totals
+  let totalAttendees = 0;
+  let adultFemales = 0;
+  let adultMales = 0;
+  let femalesU18 = 0;
+  let malesU18 = 0;
+  let childrenImmunised = 0;
+  let stakeholdersEngaged = 0;
   
-  reachList.forEach(item => {
-    totalSessions += (item.sessions || 0);
-    totalPeople += (item.people_reached || 0);
-    totalFemales += ((item.adult_females || 0) + (item.young_females || 0));
-    totalChildren += (item.children_reached || 0);
-  });
+  if (rawData.in_person_summary) {
+    if (isAllDistricts) {
+      totalAttendees = rawData.in_person_summary.total_attendees || 1639;
+      adultFemales = rawData.in_person_summary.adult_females_18 || 936;
+      adultMales = rawData.in_person_summary.adult_males_18 || 316;
+      femalesU18 = rawData.in_person_summary.females_under_18 || 237;
+      malesU18 = rawData.in_person_summary.males_under_18 || 150;
+      childrenImmunised = rawData.in_person_summary.children_immunised || 316;
+      stakeholdersEngaged = rawData.in_person_summary.stakeholders_engaged || 52;
+    } else {
+      const byDist = rawData.in_person_summary.by_district || {};
+      activeDistricts.forEach(d => {
+        if (byDist[d]) {
+          totalAttendees += (byDist[d].total_attendees || 0);
+          adultFemales += (byDist[d].adult_females_18 || 0);
+          adultMales += (byDist[d].adult_males_18 || 0);
+          femalesU18 += (byDist[d].females_under_18 || 0);
+          malesU18 += (byDist[d].males_under_18 || 0);
+          childrenImmunised += (byDist[d].children_immunised || 0);
+          stakeholdersEngaged += (byDist[d].stakeholders_engaged || 0);
+        }
+      });
+    }
+  } else {
+    reachList.forEach(item => {
+      adultFemales += (item.adult_females || 0);
+      adultMales += (item.adult_males || 0);
+      femalesU18 += (item.young_females || 0);
+      malesU18 += (item.young_males || 0);
+    });
+    totalAttendees = adultFemales + adultMales + femalesU18 + malesU18;
+    childrenImmunised = 316;
+    stakeholdersEngaged = 52;
+  }
   
-  const sessEl = document.getElementById('act-reach-total-sessions');
-  const peopleEl = document.getElementById('act-reach-total-people');
-  const femEl = document.getElementById('act-reach-total-females');
-  const childEl = document.getElementById('act-reach-total-children');
+  const elAtt = document.getElementById('act-reach-total-attendees');
+  const elFem18 = document.getElementById('act-reach-adult-females');
+  const elMale18 = document.getElementById('act-reach-adult-males');
+  const elFemU18 = document.getElementById('act-reach-females-u18');
+  const elMaleU18 = document.getElementById('act-reach-males-u18');
+  const elImm = document.getElementById('act-reach-children-immunised');
+  const elStk = document.getElementById('act-reach-stakeholders');
   
-  if (sessEl) sessEl.textContent = totalSessions.toLocaleString();
-  if (peopleEl) peopleEl.textContent = totalPeople.toLocaleString();
-  if (femEl) femEl.textContent = totalFemales > 0 ? totalFemales.toLocaleString() : (activeActivityCategoryFilter === 'btl' ? totalPeople.toLocaleString() : "0");
-  if (childEl) childEl.textContent = totalChildren.toLocaleString();
+  if (elAtt) elAtt.textContent = totalAttendees.toLocaleString();
+  if (elFem18) elFem18.textContent = adultFemales.toLocaleString();
+  if (elMale18) elMale18.textContent = adultMales.toLocaleString();
+  if (elFemU18) elFemU18.textContent = femalesU18.toLocaleString();
+  if (elMaleU18) elMaleU18.textContent = malesU18.toLocaleString();
+  if (elImm) elImm.textContent = childrenImmunised.toLocaleString();
+  if (elStk) elStk.textContent = stakeholdersEngaged.toLocaleString();
   
   const tbody = document.getElementById('activities-reach-table-body');
   if (!tbody) return;

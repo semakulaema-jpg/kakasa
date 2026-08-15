@@ -40252,6 +40252,53 @@
       }
     ]
   },
+  "in_person_summary": {
+    "total_attendees": 1639,
+    "adult_females_18": 936,
+    "adult_males_18": 316,
+    "females_under_18": 237,
+    "males_under_18": 150,
+    "children_immunised": 316,
+    "stakeholders_engaged": 52,
+    "by_district": {
+      "Kampala": {
+        "total_attendees": 47,
+        "adult_females_18": 32,
+        "adult_males_18": 15,
+        "females_under_18": 0,
+        "males_under_18": 0,
+        "children_immunised": 0,
+        "stakeholders_engaged": 6
+      },
+      "Kamuli": {
+        "total_attendees": 1405,
+        "adult_females_18": 750,
+        "adult_males_18": 287,
+        "females_under_18": 218,
+        "males_under_18": 150,
+        "children_immunised": 149,
+        "stakeholders_engaged": 29
+      },
+      "Mukono": {
+        "total_attendees": 73,
+        "adult_females_18": 63,
+        "adult_males_18": 8,
+        "females_under_18": 2,
+        "males_under_18": 0,
+        "children_immunised": 57,
+        "stakeholders_engaged": 9
+      },
+      "Wakiso": {
+        "total_attendees": 114,
+        "adult_females_18": 91,
+        "adult_males_18": 6,
+        "females_under_18": 17,
+        "males_under_18": 0,
+        "children_immunised": 110,
+        "stakeholders_engaged": 8
+      }
+    }
+  },
   "activities": [
     {
       "id": 1,
