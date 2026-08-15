@@ -998,11 +998,17 @@ function renderActivitiesReachSection() {
   let stakeholdersEngaged = 0;
   
   if (rawData.all_activity_records && rawData.all_activity_records.length > 0) {
-    // 1. Filter raw activity records by selected districts AND date range
+    // 1. Filter raw activity records by selected districts, statuses AND date range
     let records = rawData.all_activity_records.filter(item => 
       item.district === 'All' || activeDistsLower.includes(item.district.toLowerCase())
     );
     
+    // Status filter
+    if (activeStatuses.length > 0) {
+      records = records.filter(item => item.status === 'All' || activeStatuses.includes(item.status));
+    }
+    
+    // Date range filter
     if (activeStartDate) {
       records = records.filter(item => !item.date || item.date >= activeStartDate);
     }
